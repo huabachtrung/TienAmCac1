@@ -1,0 +1,27 @@
+{
+  "id": "5a24dbb4-6199-409b-a13c-88774be3ea24",
+  "status": "failed",
+  "filename": "remote-video",
+  "file_path": "",
+  "media_kind": "video",
+  "total_chapters": 0,
+  "processed_chapters": 0,
+  "chapters": [],
+  "output_path": null,
+  "error": "[Errno 1094995529] Invalid data found when processing input: 'c:\\\\Users\\\\Admin\\\\Desktop\\\\TienAmCac\\\\backend\\\\assets\\\\uploads\\\\5a24dbb4-6199-409b-a13c-88774be3ea24\\\\mock.mp4'",
+  "created_at": "2026-04-25T05:59:48.710524",
+  "updated_at": "2026-04-25T05:59:48.710524",
+  "meta": {
+    "source_url": "https://www.youtube.com/watch?v=RmHYQrQ7IvQ&list=PLdM751AKK4aOpObYVxag4LiN9zbq6kaPH",
+    "orientation": "vertical",
+    "style": "review_short",
+    "max_duration_sec": 20
+  },
+  "progress": {
+    "parsing": 15,
+    "analyzing": 0,
+    "voice": 0,
+    "fx": 0,
+    "mixing": 0
+  }
+}

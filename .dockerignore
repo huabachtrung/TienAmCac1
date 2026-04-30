@@ -1,0 +1,17 @@
+.git
+.vscode
+.tools
+.pytest_cache
+__pycache__
+*.pyc
+*.pyo
+backend/venv
+backend/.venv-win
+backend/assets/jobs/*
+backend/assets/output/*
+backend/assets/uploads/*
+backend/assets/video_temp/*
+backend/assets/video_output/*
+!backend/assets/bgm
+!backend/assets/sfx
+!backend/assets/voice_samples

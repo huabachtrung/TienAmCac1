@@ -1,0 +1,35 @@
+{
+  "id": "0b61f6c0-8c6f-40bf-a2c5-e7df384e3615",
+  "status": "analyzing",
+  "filename": "Anime_tr_n_b_L_p_h_c_am_sat_S2_Vi_t_sub [-TAbPxnwI8A].mp4",
+  "file_path": "C:\\Users\\Admin\\Desktop\\TienAmCac\\backend\\assets\\uploads\\0b61f6c0-8c6f-40bf-a2c5-e7df384e3615\\Anime_tr_n_b_L_p_h_c_am_sat_S2_Vi_t_sub [-TAbPxnwI8A].mp4",
+  "media_kind": "video",
+  "total_chapters": 0,
+  "processed_chapters": 0,
+  "chapters": [],
+  "output_path": null,
+  "error": null,
+  "created_at": "2026-04-27T11:36:19.791415",
+  "updated_at": "2026-04-27T11:36:19.791415",
+  "meta": {
+    "orientation": "vertical",
+    "style": "review_short",
+    "max_duration_sec": 60,
+    "source_url": "https://www.youtube.com/watch?v=-TAbPxnwI8A",
+    "source_path": "C:\\Users\\Admin\\Desktop\\TienAmCac\\backend\\assets\\uploads\\0b61f6c0-8c6f-40bf-a2c5-e7df384e3615\\Anime_tr_n_b_L_p_h_c_am_sat_S2_Vi_t_sub [-TAbPxnwI8A].mp4",
+    "source_meta": {
+      "duration_sec": 34873.86,
+      "width": 640,
+      "height": 360,
+      "fps": 23.976023976023978,
+      "has_audio": true
+    }
+  },
+  "progress": {
+    "parsing": 100,
+    "analyzing": 15,
+    "voice": 0,
+    "fx": 0,
+    "mixing": 0
+  }
+}

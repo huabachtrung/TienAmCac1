@@ -1,0 +1,55 @@
+{
+  "id": "2ed063b8-6409-43cb-9c8c-b814e53201ce",
+  "status": "failed",
+  "filename": "ZORO_Was_Late_Again..._Until_He_Bought_This_Car_on [7631127218894343444].mp4",
+  "file_path": "C:\\Users\\Admin\\Desktop\\TienAmCac\\backend\\assets\\uploads\\2ed063b8-6409-43cb-9c8c-b814e53201ce\\ZORO_Was_Late_Again..._Until_He_Bought_This_Car_on [7631127218894343444].mp4",
+  "media_kind": "video",
+  "total_chapters": 0,
+  "processed_chapters": 0,
+  "chapters": [],
+  "output_path": null,
+  "error": "ffmpeg version 4.2.2 Copyright (c) 2000-2019 the FFmpeg developers\n  built with gcc 9.2.1 (GCC) 20200122\n  configuration: --enable-gpl --enable-version3 --enable-sdl2 --enable-fontconfig --enable-gnutls --enable-iconv --enable-libass --enable-libdav1d --enable-libbluray --enable-libfreetype --enable-libmp3lame --enable-libopencore-amrnb --enable-libopencore-amrwb --enable-libopenjpeg --enable-libopus --enable-libshine --enable-libsnappy --enable-libsoxr --enable-libtheora --enable-libtwolame --enable-libvpx --enable-libwavpack --enable-libwebp --enable-libx264 --enable-libx265 --enable-libxml2 --enable-libzimg --enable-lzma --enable-zlib --enable-gmp --enable-libvidstab --enable-libvorbis --enable-libvo-amrwbenc --enable-libmysofa --enable-libspeex --enable-libxvid --enable-libaom --enable-libmfx --enable-amf --enable-ffnvcodec --enable-cuvid --enable-d3d11va --enable-nvenc --enable-nvdec --enable-dxva2 --enable-avisynth --enable-libopenmpt\n  libavutil      56. 31.100 / 56. 31.100\n  libavcodec     58. 54.100 / 58. 54.100\n  libavformat    58. 29.100 / 58. 29.100\n  libavdevice    58.  8.100 / 58.  8.100\n  libavfilter     7. 57.100 /  7. 57.100\n  libswscale      5.  5.100 /  5.  5.100\n  libswresample   3.  5.100 /  3.  5.100\n  libpostproc    55.  5.100 / 55.  5.100\nInput #0, mov,mp4,m4a,3gp,3g2,mj2, from 'C:\\Users\\Admin\\Desktop\\TienAmCac\\backend\\assets\\video_temp\\2ed063b8-6409-43cb-9c8c-b814e53201ce\\visual_track.mp4':\n  Metadata:\n    major_brand     : isom\n    minor_version   : 512\n    compatible_brands: isomiso2avc1mp41\n    encoder         : Lavf58.29.100\n  Duration: 00:00:10.03, start: 0.000000, bitrate: 2114 kb/s\n    Stream #0:0(und): Video: h264 (High) (avc1 / 0x31637661), yuv420p, 1080x1920 [SAR 1:1 DAR 9:16], 2111 kb/s, 30 fps, 30 tbr, 15360 tbn, 60 tbc (default)\n    Metadata:\n      handler_name    : VideoHandler\nGuessed Channel Layout for Input Stream #1.0 : mono\nInput #1, wav, from 'C:\\Users\\Admin\\Desktop\\TienAmCac\\backend\\assets\\video_temp\\2ed063b8-6409-43cb-9c8c-b814e53201ce\\review_mix.wav':\n  Duration: 00:00:10.00, bitrate: 352 kb/s\n    Stream #1:0: Audio: pcm_s16le ([1][0][0][0] / 0x0001), 22050 Hz, mono, s16, 352 kb/s\nStream mapping:\n  Stream #0:0 -> #0:0 (h264 (native) -> h264 (libx264))\n  Stream #1:0 -> #0:1 (pcm_s16le (native) -> aac (native))\nPress [q] to stop, [?] for help\nFontconfig error: Cannot load default config file\n[Parsed_drawtext_0 @ 0000025f9f5cef00] Using \"C:/Windows/fonts/mingliub.ttc\"\n[AVFilterGraph @ 0000025f9ed1c8c0] No such filter: 'FontSize'\nError reinitializing filters!\nFailed to inject frame into filter network: Invalid argument\nError while processing the decoded data for stream #0:0\nConversion failed!",
+  "created_at": "2026-04-25T04:30:27.752363",
+  "updated_at": "2026-04-25T04:30:27.752363",
+  "meta": {
+    "source_url": "https://www.tiktok.com/@legoninjagovn/video/7631127218894343444",
+    "orientation": "vertical",
+    "style": "review_short",
+    "max_duration_sec": 10,
+    "source_path": "C:\\Users\\Admin\\Desktop\\TienAmCac\\backend\\assets\\uploads\\2ed063b8-6409-43cb-9c8c-b814e53201ce\\ZORO_Was_Late_Again..._Until_He_Bought_This_Car_on [7631127218894343444].mp4",
+    "source_meta": {
+      "duration_sec": 168.07,
+      "width": 720,
+      "height": 1280,
+      "fps": 30.0,
+      "has_audio": true
+    },
+    "transcript_preview": "In a city where time decides your worth. He leaves early, he drives fast. He knows exactly where he's going. I'm...m...lost. He trusts his instincts. Recalculating. Recalculating. This doesn't look right. It's a shortcut. Where are you? Almost there. No, you're not. At this point, turning back would feel like failure. Finally, I'm here. I'm...lost. This was not the first time. Or are you? I'm...st",
+    "transcript_language": "en",
+    "review_title": "Zoro's Lost Journey: A City Driver's Guide",
+    "review_script": "In a city where time decides your worth... He leaves early, drives fast. Trusts his instincts and recalculates. Finally found the right path. Subscribe for more adventures!",
+    "selected_ranges": [
+      {
+        "start": 56.08,
+        "end": 60.08
+      },
+      {
+        "start": 107.2,
+        "end": 111.2
+      },
+      {
+        "start": 160.3,
+        "end": 164.3
+      }
+    ],
+    "subtitles_path": "C:\\Users\\Admin\\Desktop\\TienAmCac\\backend\\assets\\video_temp\\2ed063b8-6409-43cb-9c8c-b814e53201ce\\review_subtitles.srt",
+    "audio_mix_path": "C:\\Users\\Admin\\Desktop\\TienAmCac\\backend\\assets\\video_temp\\2ed063b8-6409-43cb-9c8c-b814e53201ce\\review_mix.wav"
+  },
+  "progress": {
+    "parsing": 100,
+    "analyzing": 100,
+    "voice": 100,
+    "fx": 0,
+    "mixing": 30
+  }
+}

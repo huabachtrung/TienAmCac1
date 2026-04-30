@@ -1,0 +1,56 @@
+{
+  "id": "test-smart-crop-01",
+  "status": "done",
+  "filename": "Fairy_Tail_Movie_-_Vu_n_c_a_Ph_ng_hoang_Vi_t_sub [yaVf6Qqhh7g].mp4",
+  "file_path": "C:\\Users\\Admin\\Desktop\\TienAmCac\\backend\\assets\\uploads\\test-smart-crop-01\\Fairy_Tail_Movie_-_Vu_n_c_a_Ph_ng_hoang_Vi_t_sub [yaVf6Qqhh7g].mp4",
+  "media_kind": "video",
+  "total_chapters": 0,
+  "processed_chapters": 0,
+  "chapters": [],
+  "output_path": "C:\\Users\\Admin\\Desktop\\TienAmCac\\backend\\assets\\video_output\\test-smart-crop-01\\review_output.mp4",
+  "error": null,
+  "created_at": "2026-04-25T05:02:02.304641",
+  "updated_at": "2026-04-25T05:02:02.304641",
+  "meta": {
+    "source_url": "https://www.youtube.com/watch?v=yaVf6Qqhh7g",
+    "orientation": "vertical",
+    "style": "review_short",
+    "max_duration_sec": 10,
+    "source_path": "C:\\Users\\Admin\\Desktop\\TienAmCac\\backend\\assets\\uploads\\test-smart-crop-01\\Fairy_Tail_Movie_-_Vu_n_c_a_Ph_ng_hoang_Vi_t_sub [yaVf6Qqhh7g].mp4",
+    "source_meta": {
+      "duration_sec": 5156.01,
+      "width": 640,
+      "height": 360,
+      "fps": 24.0,
+      "has_audio": true
+    },
+    "transcript_preview": "いらっしゃおによればあのテップの取り出やとかネグラよ やけに張り切ってるなぁ 当然 最近みように自身見なぎちゃってるのよね シャー! 仕事だ!いくぞ!Happy! おかぁ! なんとらだんだんとかな バックアストアバクダのリーダー 技術のほぼバック ちょうちょうからのいらいだから あっけによ しっなんだ? 上に 待ち迎せかよ 全面だ! こっから先は通さね 海に経営として さやかなのいさに進むくれ ちよーぞ! 燃えてきたぞ 表的はただ一人 リーダーのギース そいつを探してトライなければ 放送は全然 放送をしようほしい! ちょうほしい! 放送を早く落ち着くだ やっちまえ! チレン! ってくるのよ あったのアイボーはなってしまう? フェイラがシャルロのモノナナイト おけがおせは でもそこなのもだに暴らな さにするだ お前のくすやけたからにしてやんよ キャニルの キャニルの おーか! ふわり! ハッ",
+    "transcript_language": "ja",
+    "review_title": "Fairy Tail Movie - Vu_n_c_a_Ph_ng_hoang_Vi_t_sub",
+    "review_script": "テップの取り出やがて張り切ってるなぁ！ 仕事だ！いくぞ！Happy! 放送を早く落ち着かせたい！ みんな、夏に会いましょう！",
+    "selected_ranges": [
+      {
+        "start": 547.11,
+        "end": 551.11
+      },
+      {
+        "start": 560.73,
+        "end": 564.73
+      },
+      {
+        "start": 4247.8,
+        "end": 4251.8
+      }
+    ],
+    "subtitles_path": "C:\\Users\\Admin\\Desktop\\TienAmCac\\backend\\assets\\video_temp\\test-smart-crop-01\\review_subtitles.srt",
+    "audio_mix_path": "C:\\Users\\Admin\\Desktop\\TienAmCac\\backend\\assets\\video_temp\\test-smart-crop-01\\review_mix.wav",
+    "rendered_title": "Fairy Tail Movie - Vu_n_c_a_Ph_ng_hoang_Vi_t_sub"
+  },
+  "progress": {
+    "parsing": 100,
+    "analyzing": 100,
+    "voice": 100,
+    "fx": 0,
+    "mixing": 100
+  }
+}

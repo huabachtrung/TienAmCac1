@@ -1,0 +1,56 @@
+{
+  "id": "f7f3a3f2-43c5-4dea-9fe8-ef4cf4b25474",
+  "status": "done",
+  "filename": "MAI_M_I_CHO_C_S_-_T_p_01_Vi_t_sub [ywUztJ8yTnw].mp4",
+  "file_path": "C:\\Users\\Admin\\Desktop\\TienAmCac\\backend\\assets\\uploads\\f7f3a3f2-43c5-4dea-9fe8-ef4cf4b25474\\MAI_M_I_CHO_C_S_-_T_p_01_Vi_t_sub [ywUztJ8yTnw].mp4",
+  "media_kind": "video",
+  "total_chapters": 0,
+  "processed_chapters": 0,
+  "chapters": [],
+  "output_path": "C:\\Users\\Admin\\Desktop\\TienAmCac\\backend\\assets\\video_output\\f7f3a3f2-43c5-4dea-9fe8-ef4cf4b25474\\review_output.mp4",
+  "error": null,
+  "created_at": "2026-04-27T05:15:40.038325",
+  "updated_at": "2026-04-27T05:15:40.038325",
+  "meta": {
+    "orientation": "vertical",
+    "style": "review_short",
+    "max_duration_sec": 45,
+    "source_url": "https://www.youtube.com/watch?v=ywUztJ8yTnw",
+    "source_path": "C:\\Users\\Admin\\Desktop\\TienAmCac\\backend\\assets\\uploads\\f7f3a3f2-43c5-4dea-9fe8-ef4cf4b25474\\MAI_M_I_CHO_C_S_-_T_p_01_Vi_t_sub [ywUztJ8yTnw].mp4",
+    "source_meta": {
+      "duration_sec": 1436.04,
+      "width": 640,
+      "height": 360,
+      "fps": 23.976023976023978,
+      "has_audio": true
+    },
+    "transcript_preview": "人の無くもりをもっと言う 人間株を操縦終了ね いくども当たんの効きに落ち行ったが その旅に洗える移動な手を作して立て直した その積み重ねが共同主に決めずしたんだ ん? デリシャス 独物はありません ノープロブレムですプレジテンター パモツそれから夏ミサ 結婚を目でと ジョーブナーとちぎの男の子を ドバードバー運転でくれ 完璧! あわーい! プレッテンと 焼きたたつが なぜ? ちょっとくらめちゃったな そこもったら私じゃない ねぇ どうやったの? 自分での独物を出しない 独物を盛るなんて 無 独物の大体に交通を制装した こうとよ どうよって? 3ヶ月間独物の食事に ビデオの独物を混ぜ込み 知事料でもしながりとり出した でもそれって分かみたいに面倒じゃな まあな 誰もそんなバカゲたことをやると 思わない だからこそ俺たちは仕事を追い込んできる ところでお兄ちゃん あのけ 考えてくれた? あのけ",
+    "transcript_language": "ja",
+    "review_title": "人無しの旅",
+    "review_script": "人の無くもりをもっと言う。 独物を出さず、独物を盛るなんて。 3ヶ月間独物の食事に混ぜ込み、知事料も取りました。でも分かたくないなら誰もそんなバカがいます。 結婚には出会いがないけど、おばあちゃんの家を伝えたかったんです。顔も知らない男と引き合わせるため、面倒なことでした。 結婚したいと思うなら、私と一緒にしましょう！",
+    "selected_ranges": [
+      {
+        "start": 236.65,
+        "end": 240.65
+      },
+      {
+        "start": 718.28,
+        "end": 722.28
+      },
+      {
+        "start": 1191.36,
+        "end": 1195.36
+      }
+    ],
+    "subtitles_path": "C:\\Users\\Admin\\Desktop\\TienAmCac\\backend\\assets\\video_temp\\f7f3a3f2-43c5-4dea-9fe8-ef4cf4b25474\\review_subtitles.srt",
+    "audio_mix_path": "C:\\Users\\Admin\\Desktop\\TienAmCac\\backend\\assets\\video_temp\\f7f3a3f2-43c5-4dea-9fe8-ef4cf4b25474\\review_mix.wav",
+    "rendered_title": "人無しの旅"
+  },
+  "progress": {
+    "parsing": 100,
+    "analyzing": 100,
+    "voice": 100,
+    "fx": 0,
+    "mixing": 100
+  }
+}

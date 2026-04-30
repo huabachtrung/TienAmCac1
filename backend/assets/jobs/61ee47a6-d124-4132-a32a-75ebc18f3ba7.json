@@ -1,0 +1,56 @@
+{
+  "id": "61ee47a6-d124-4132-a32a-75ebc18f3ba7",
+  "status": "done",
+  "filename": "Fairy_Tail_Movie_-_Vu_n_c_a_Ph_ng_hoang_Vi_t_sub [yaVf6Qqhh7g].mp4",
+  "file_path": "C:\\Users\\Admin\\Desktop\\TienAmCac\\backend\\assets\\uploads\\61ee47a6-d124-4132-a32a-75ebc18f3ba7\\Fairy_Tail_Movie_-_Vu_n_c_a_Ph_ng_hoang_Vi_t_sub [yaVf6Qqhh7g].mp4",
+  "media_kind": "video",
+  "total_chapters": 0,
+  "processed_chapters": 0,
+  "chapters": [],
+  "output_path": "C:\\Users\\Admin\\Desktop\\TienAmCac\\backend\\assets\\video_output\\61ee47a6-d124-4132-a32a-75ebc18f3ba7\\review_output.mp4",
+  "error": null,
+  "created_at": "2026-04-25T04:52:34.380137",
+  "updated_at": "2026-04-25T04:52:34.380137",
+  "meta": {
+    "source_url": "https://www.youtube.com/watch?v=yaVf6Qqhh7g",
+    "orientation": "vertical",
+    "style": "review_short",
+    "max_duration_sec": 30,
+    "source_path": "C:\\Users\\Admin\\Desktop\\TienAmCac\\backend\\assets\\uploads\\61ee47a6-d124-4132-a32a-75ebc18f3ba7\\Fairy_Tail_Movie_-_Vu_n_c_a_Ph_ng_hoang_Vi_t_sub [yaVf6Qqhh7g].mp4",
+    "source_meta": {
+      "duration_sec": 5156.01,
+      "width": 640,
+      "height": 360,
+      "fps": 24.0,
+      "has_audio": true
+    },
+    "transcript_preview": "いらっしゃおによればあのテップの取り出やとかネグラよ やけに歯リギってるなぁ 当然 最近みように自身みなぎちゃってるのよね シャー! 仕事だ!いくぞ!Happy! あ! なんとらだんだんとかな? バックストータクダのリーダー 技術のほぼく 超超からのいらいだから! あっけによ! なんだ? Windy 待ち迎えよ 全面だ! こっから先は通さね 海に経を閉して さやかなのいさに住んでくれ! ジョース! 燃えてきたぞ! 表的はただ一人 リーダーのギース! そいつを探してトライなければ 放信は全然! 放信放信! 超放信! 放信! お腹やちゃくだ! やっちまい! チレン! ってくるのよ あったのアイボーはなってしまう? フェイラはシャルロのモノラが 絶対よっ! おせは! でもそこのモダにするな! サニスルだ! オマエロクスやけたからにしてやんよ キャニルの! キャニルの! ほうか! ふわり! ハッピ",
+    "transcript_language": "ja",
+    "review_title": "Fairy Tail Movie - Vu_n_c_a_Ph_ng_hoang_Vi_t_sub [yaVf6Qqhh7g]",
+    "review_script": "テップの取り出やとかネグラが歯リギってるなぁ 仕事だ!いくぞ! 風いなに待ち迎えよ 全面だ! おやぶをさせたしやつがいるか! 気に入ったおとこギがあるではないか! 確保はできているな!",
+    "selected_ranges": [
+      {
+        "start": 459.03,
+        "end": 463.03
+      },
+      {
+        "start": 3214.24,
+        "end": 3218.24
+      },
+      {
+        "start": 3252.56,
+        "end": 3256.56
+      }
+    ],
+    "subtitles_path": "C:\\Users\\Admin\\Desktop\\TienAmCac\\backend\\assets\\video_temp\\61ee47a6-d124-4132-a32a-75ebc18f3ba7\\review_subtitles.srt",
+    "audio_mix_path": "C:\\Users\\Admin\\Desktop\\TienAmCac\\backend\\assets\\video_temp\\61ee47a6-d124-4132-a32a-75ebc18f3ba7\\review_mix.wav",
+    "rendered_title": "Fairy Tail Movie - Vu_n_c_a_Ph_ng_hoang_Vi_t_sub [yaVf6Qqhh7g]"
+  },
+  "progress": {
+    "parsing": 100,
+    "analyzing": 100,
+    "voice": 100,
+    "fx": 0,
+    "mixing": 100
+  }
+}

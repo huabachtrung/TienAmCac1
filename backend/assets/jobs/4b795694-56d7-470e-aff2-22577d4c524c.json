@@ -1,0 +1,56 @@
+{
+  "id": "4b795694-56d7-470e-aff2-22577d4c524c",
+  "status": "done",
+  "filename": "Don_t_touch_my_space_Bari_Bari_no_Mi_Power_xuhuong [7632541914083921173].mp4",
+  "file_path": "C:\\Users\\Admin\\Desktop\\TienAmCac\\backend\\assets\\uploads\\4b795694-56d7-470e-aff2-22577d4c524c\\Don_t_touch_my_space_Bari_Bari_no_Mi_Power_xuhuong [7632541914083921173].mp4",
+  "media_kind": "video",
+  "total_chapters": 0,
+  "processed_chapters": 0,
+  "chapters": [],
+  "output_path": "C:\\Users\\Admin\\Desktop\\TienAmCac\\backend\\assets\\video_output\\4b795694-56d7-470e-aff2-22577d4c524c\\review_output.mp4",
+  "error": null,
+  "created_at": "2026-04-25T05:58:58.785311",
+  "updated_at": "2026-04-25T05:58:58.785311",
+  "meta": {
+    "source_url": "https://www.tiktok.com/@legoninjagovn/video/7632541914083921173",
+    "orientation": "vertical",
+    "style": "review_short",
+    "max_duration_sec": 20,
+    "source_path": "C:\\Users\\Admin\\Desktop\\TienAmCac\\backend\\assets\\uploads\\4b795694-56d7-470e-aff2-22577d4c524c\\Don_t_touch_my_space_Bari_Bari_no_Mi_Power_xuhuong [7632541914083921173].mp4",
+    "source_meta": {
+      "duration_sec": 80.04,
+      "width": 576,
+      "height": 1024,
+      "fps": 30.0,
+      "has_audio": true
+    },
+    "transcript_preview": "Some fruits promise power. This one promises you'll never have to say sorry again. Crunchy, weirdly bitter like confidence with commitment issues. Congratulations. You may still avoid conversations, but now even reality respects your personal space. Perfect defense. Terrible customer service. Sorry, barren Omey. Protects you from danger and accidentally from society. You wanted privacy. Over the d",
+    "transcript_language": "en",
+    "review_title": "Bari Bari No Mi Power",
+    "review_script": "Confidence with commitment issues? Perfect defense against conversations. Unbreakable barrier from society and reality. Blocks what doesn't matter, lets in what does. More fruits coming. Protects you from danger and traffic. Stop the tax!",
+    "selected_ranges": [
+      {
+        "start": 0.0,
+        "end": 6.67
+      },
+      {
+        "start": 16.26,
+        "end": 22.93
+      },
+      {
+        "start": 31.82,
+        "end": 38.49
+      }
+    ],
+    "subtitles_path": "C:\\Users\\Admin\\Desktop\\TienAmCac\\backend\\assets\\video_temp\\4b795694-56d7-470e-aff2-22577d4c524c\\review_subtitles.srt",
+    "audio_mix_path": "C:\\Users\\Admin\\Desktop\\TienAmCac\\backend\\assets\\video_temp\\4b795694-56d7-470e-aff2-22577d4c524c\\review_mix.wav",
+    "rendered_title": "Bari Bari No Mi Power"
+  },
+  "progress": {
+    "parsing": 100,
+    "analyzing": 100,
+    "voice": 100,
+    "fx": 0,
+    "mixing": 100
+  }
+}

@@ -1,0 +1,4 @@
+Chương 1
+Đây là một đoạn text mẫu để kiểm tra hệ thống.
+Tiên Âm Các là một hệ thống tạo sách nói tự động.
+Hệ thống sử dụng các công nghệ như FastAPI, Edge-TTS và ffmpeg.

@@ -1,0 +1,82 @@
+{
+  "id": "3580a430-7313-4b00-ab6d-2bb5a3b2c941",
+  "status": "failed",
+  "filename": "sample_test.txt",
+  "file_path": "C:\\Users\\Admin\\Desktop\\TienAmCac\\backend\\assets\\uploads\\3580a430-7313-4b00-ab6d-2bb5a3b2c941\\sample_test.txt",
+  "media_kind": "audio",
+  "total_chapters": 1,
+  "processed_chapters": 1,
+  "chapters": [
+    {
+      "index": 0,
+      "title": "Chương 1",
+      "raw_text": "Đây là một đoạn text mẫu để kiểm tra hệ thống.\nTiên Âm Các là một hệ thống tạo sách nói tự động.\nHệ thống sử dụng các công nghệ như FastAPI, Edge-TTS và ffmpeg.",
+      "segments": [
+        {
+          "index": 0,
+          "text": "Đây là một đoạn text mẫu để kiểm tra hệ thống. Tiên Âm Các là một hệ thống tạo sách nói tự động. Hệ thống sử dụng các công nghệ như FastAPI, Edge-TTS và ffmpeg.",
+          "is_dialog": false,
+          "speaker": null,
+          "character_type": "narrator",
+          "scene_type": "narration",
+          "emotion": "calm",
+          "emotion_intensity": 0.3,
+          "sfx_triggers": [],
+          "bgm_change": "bgm_ambient_light.mp3",
+          "voice_file": null,
+          "voice_profile": {
+            "voice": "vi-VN-HoaiMyNeural",
+            "rate": "-8%",
+            "pitch": "+0Hz"
+          },
+          "speaker_key": null,
+          "duration_sec": 0.0
+        }
+      ],
+      "characters": [
+        {
+          "name": "Đây",
+          "character_type": "male_young",
+          "description": null,
+          "voice_config": null
+        },
+        {
+          "name": "đoạn",
+          "character_type": "male_young",
+          "description": null,
+          "voice_config": null
+        },
+        {
+          "name": "Tiên Âm Các",
+          "character_type": "male_young",
+          "description": null,
+          "voice_config": null
+        },
+        {
+          "name": "động",
+          "character_type": "male_young",
+          "description": null,
+          "voice_config": null
+        },
+        {
+          "name": "Edge",
+          "character_type": "male_young",
+          "description": null,
+          "voice_config": null
+        }
+      ]
+    }
+  ],
+  "output_path": null,
+  "error": "An asyncio.Future, a coroutine or an awaitable is required\n\nTraceback:\nTraceback (most recent call last):\n  File \"C:\\Users\\Admin\\Desktop\\TienAmCac\\backend\\core\\orchestrator.py\", line 200, in _run_pipeline\n    voice_files = _run_async(\n                  ^^^^^^^^^^^\n  File \"C:\\Users\\Admin\\Desktop\\TienAmCac\\backend\\core\\orchestrator.py\", line 90, in _run_async\n    return loop.run_until_complete(coro)\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"C:\\Users\\Admin\\Desktop\\TienAmCac\\.tools\\python311\\Lib\\asyncio\\base_events.py\", line 633, in run_until_complete\n    future = tasks.ensure_future(future, loop=self)\n             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"C:\\Users\\Admin\\Desktop\\TienAmCac\\.tools\\python311\\Lib\\asyncio\\tasks.py\", line 659, in ensure_future\n    return _ensure_future(coro_or_future, loop=loop)\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"C:\\Users\\Admin\\Desktop\\TienAmCac\\.tools\\python311\\Lib\\asyncio\\tasks.py\", line 674, in _ensure_future\n    raise TypeError('An asyncio.Future, a coroutine or an awaitable '\nTypeError: An asyncio.Future, a coroutine or an awaitable is required\n",
+  "created_at": "2026-04-27T02:33:03.411278",
+  "updated_at": "2026-04-27T02:33:03.411278",
+  "meta": {},
+  "progress": {
+    "parsing": 100,
+    "analyzing": 100,
+    "voice": 100,
+    "fx": 0,
+    "mixing": 0
+  }
+}

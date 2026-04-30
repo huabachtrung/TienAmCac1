@@ -1,0 +1,56 @@
+{
+  "id": "1074564b-aad4-4cfb-a4b5-f94f086c4fad",
+  "status": "done",
+  "filename": "MAI_M_I_CHO_C_S_-_T_p_01_Vi_t_sub [ywUztJ8yTnw].mp4",
+  "file_path": "C:\\Users\\Admin\\Desktop\\TienAmCac\\backend\\assets\\uploads\\1074564b-aad4-4cfb-a4b5-f94f086c4fad\\MAI_M_I_CHO_C_S_-_T_p_01_Vi_t_sub [ywUztJ8yTnw].mp4",
+  "media_kind": "video",
+  "total_chapters": 0,
+  "processed_chapters": 0,
+  "chapters": [],
+  "output_path": "C:\\Users\\Admin\\Desktop\\TienAmCac\\backend\\assets\\video_output\\1074564b-aad4-4cfb-a4b5-f94f086c4fad\\review_output.mp4",
+  "error": null,
+  "created_at": "2026-04-27T03:59:22.388757",
+  "updated_at": "2026-04-27T03:59:22.388757",
+  "meta": {
+    "orientation": "vertical",
+    "style": "review_short",
+    "max_duration_sec": 45,
+    "source_url": "https://www.youtube.com/watch?v=ywUztJ8yTnw",
+    "source_path": "C:\\Users\\Admin\\Desktop\\TienAmCac\\backend\\assets\\uploads\\1074564b-aad4-4cfb-a4b5-f94f086c4fad\\MAI_M_I_CHO_C_S_-_T_p_01_Vi_t_sub [ywUztJ8yTnw].mp4",
+    "source_meta": {
+      "duration_sec": 1436.04,
+      "width": 640,
+      "height": 360,
+      "fps": 23.976023976023978,
+      "has_audio": true
+    },
+    "transcript_preview": "人の無くもりをもっと言う 人間株を操縦終了ね いくども当たんの効きに落ち行ったが その旅に洗える移動な手を作して立て直した その積み重ねが共同主に決めずしたんだ ん? デリシャス 独物はありません ノープロブレムですプレジテンター パモツそれから夏ミサ 結婚を目でと ジョーブナーとちぎの男の子を ドバードバー運転でくれ 完璧! あわーい! プレッテンと 焼きたたつが なぜ? ちょっとくらめちゃったな そこもったら私じゃない ねぇ どうやったの? 自分での独物を出しない 独物を盛るなんて 無 独物の大体に交通を制装した こうとよ どうよって? 3ヶ月間独物の食事に ビデオの独物を混ぜ込み 知事料でもしながりとり出した でもそれって分かみたいに面倒じゃな まあな 誰もそんなバカゲたことをやると 思わない だからこそ俺たちは仕事を追い込んできる ところでお兄ちゃん あのけ 考えてくれた? あのけ",
+    "transcript_language": "ja",
+    "review_title": "人無し時代の独物",
+    "review_script": "あなたが見たかった独物、ここに! 独物の食事にビデオを混ぜ込み 知事料で面倒なバカゲたことをやる 独物の独物を出さない 結婚のプロとして、あなたの成功を手伝います。一緒にしましょう！",
+    "selected_ranges": [
+      {
+        "start": 70.57,
+        "end": 74.57
+      },
+      {
+        "start": 451.58,
+        "end": 455.58
+      },
+      {
+        "start": 545.3,
+        "end": 549.3
+      }
+    ],
+    "subtitles_path": "C:\\Users\\Admin\\Desktop\\TienAmCac\\backend\\assets\\video_temp\\1074564b-aad4-4cfb-a4b5-f94f086c4fad\\review_subtitles.srt",
+    "audio_mix_path": "C:\\Users\\Admin\\Desktop\\TienAmCac\\backend\\assets\\video_temp\\1074564b-aad4-4cfb-a4b5-f94f086c4fad\\review_mix.wav",
+    "rendered_title": "人無し時代の独物"
+  },
+  "progress": {
+    "parsing": 100,
+    "analyzing": 100,
+    "voice": 100,
+    "fx": 0,
+    "mixing": 100
+  }
+}

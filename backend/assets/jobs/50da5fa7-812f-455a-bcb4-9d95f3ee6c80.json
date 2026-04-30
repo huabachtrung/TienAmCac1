@@ -1,0 +1,22 @@
+{
+  "id": "50da5fa7-812f-455a-bcb4-9d95f3ee6c80",
+  "status": "parsing",
+  "filename": "update.pdf",
+  "file_path": "/tmp/update.pdf",
+  "media_kind": "audio",
+  "total_chapters": 0,
+  "processed_chapters": 1,
+  "chapters": [],
+  "output_path": null,
+  "error": null,
+  "created_at": "2026-04-24T07:19:29.767080",
+  "updated_at": "2026-04-24T07:19:29.767080",
+  "meta": {},
+  "progress": {
+    "parsing": 0,
+    "analyzing": 0,
+    "voice": 0,
+    "fx": 0,
+    "mixing": 0
+  }
+}

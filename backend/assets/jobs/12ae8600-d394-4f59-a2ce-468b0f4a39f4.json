@@ -1,0 +1,22 @@
+{
+  "id": "12ae8600-d394-4f59-a2ce-468b0f4a39f4",
+  "status": "done",
+  "filename": "done.pdf",
+  "file_path": "/tmp/done.pdf",
+  "media_kind": "audio",
+  "total_chapters": 5,
+  "processed_chapters": 5,
+  "chapters": [],
+  "output_path": "/tmp/output/done.mp3",
+  "error": null,
+  "created_at": "2026-04-25T04:01:27.445310",
+  "updated_at": "2026-04-25T04:01:27.445310",
+  "meta": {},
+  "progress": {
+    "parsing": 0,
+    "analyzing": 0,
+    "voice": 0,
+    "fx": 0,
+    "mixing": 0
+  }
+}

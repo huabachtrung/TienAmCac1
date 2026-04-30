@@ -1,0 +1,24 @@
+{
+  "id": "2a4d521a-88a5-4fde-82b2-43fc82768aa9",
+  "status": "failed",
+  "filename": "test.txt",
+  "file_path": "C:\\Users\\Admin\\Desktop\\TienAmCac\\backend\\assets\\uploads\\2a4d521a-88a5-4fde-82b2-43fc82768aa9\\test.txt",
+  "media_kind": "audio",
+  "total_chapters": 0,
+  "processed_chapters": 0,
+  "chapters": [],
+  "output_path": null,
+  "error": "Khoảng chương không hợp lệ. File có 0 chương.\n\nTraceback:\nTraceback (most recent call last):\n  File \"C:\\Users\\Admin\\Desktop\\TienAmCac\\backend\\core\\orchestrator.py\", line 151, in _run_pipeline\n    raise ValueError(\nValueError: Khoảng chương không hợp lệ. File có 0 chương.\n",
+  "created_at": "2026-04-30T12:25:18.397624",
+  "updated_at": "2026-04-30T12:25:18.397624",
+  "meta": {
+    "narrator_gender": "female"
+  },
+  "progress": {
+    "parsing": 0,
+    "analyzing": 0,
+    "voice": 0,
+    "fx": 0,
+    "mixing": 0
+  }
+}

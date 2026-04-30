@@ -1,0 +1,456 @@
+{
+  "id": "a378af77-b4d2-49ca-a54f-f352c1ab0e69",
+  "status": "failed",
+  "filename": "test_story.txt",
+  "file_path": "C:\\Users\\Admin\\Desktop\\TienAmCac\\backend\\assets\\uploads\\a378af77-b4d2-49ca-a54f-f352c1ab0e69\\test_story.txt",
+  "media_kind": "audio",
+  "total_chapters": 2,
+  "processed_chapters": 2,
+  "chapters": [
+    {
+      "index": 0,
+      "title": "Chương 1: Thiếu niên tu tiên",
+      "raw_text": "Vân Tiêu là một thiếu niên mười lăm tuổi sống ở làng Thạch Hà, dưới chân núi Linh Tiêu.\nTừ nhỏ, cậu đã khao khát được bước chân vào con đường tu tiên, trở thành một đạo nhân có thể ngao du trên chín tầng mây.\n\nBuổi sáng hôm đó, Vân Tiêu đang ngồi thiền định bên dòng suối nhỏ thì nghe tiếng gọi:\n\n\"Vân Tiêu! Ngươi ra đây ngay!\"\n\nCậu mở mắt, thấy sư phụ - Lão Kiếm Tiên - đứng bên cạnh với ánh mắt nghiêm nghị.\n\n\"Sư phụ, đệ tử có lỗi gì chăng?\" Vân Tiêu cúi đầu hỏi.\n\n\"Ta muốn thử nghiệm căn cơ của ngươi hôm nay. Nếu ngươi thực sự có tiên duyên, ta sẽ truyền thụ Cửu Thiên Kiếm Quyết.\"\n\nVân Tiêu ngẩng đầu, ánh mắt sáng rực. Đó là bí kíp mà bao nhiêu đệ tử mơ ước trong cả trăm năm.\n\nLão sư phụ giơ tay lên, một luồng linh lực xanh biếc từ bàn tay ông tỏa ra, bao phủ lấy Vân Tiêu.\n\nMột khoảnh khắc sau, ông gật đầu:\n\"Căn cơ bậc thượng. Đúng là thiên tài trăm năm mới có một.\"",
+      "segments": [
+        {
+          "index": 0,
+          "text": "Vân Tiêu là một thiếu niên mười lăm tuổi sống ở làng Thạch Hà, dưới chân núi Linh Tiêu. Từ nhỏ, cậu đã khao khát được bước chân vào con đường tu tiên, trở thành một đạo nhân có thể ngao du trên chín tầng mây.",
+          "is_dialog": false,
+          "speaker": null,
+          "character_type": "narrator",
+          "scene_type": "narration",
+          "emotion": "calm",
+          "emotion_intensity": 0.3,
+          "sfx_triggers": [
+            "sfx_footsteps_stone.wav"
+          ],
+          "bgm_change": "bgm_ambient_light.mp3",
+          "voice_file": "C:\\Users\\Admin\\Desktop\\TienAmCac\\backend\\assets\\tts_segments\\a378af77-b4d2-49ca-a54f-f352c1ab0e69\\ch000\\seg0000.wav",
+          "voice_profile": {
+            "voice": "vi-VN-HoaiMyNeural",
+            "rate": "-8%",
+            "pitch": "+0Hz"
+          },
+          "speaker_key": null,
+          "duration_sec": 13.368
+        },
+        {
+          "index": 1,
+          "text": "Buổi sáng hôm đó, Vân Tiêu đang ngồi thiền định bên dòng suối nhỏ thì nghe tiếng gọi:",
+          "is_dialog": false,
+          "speaker": null,
+          "character_type": "narrator",
+          "scene_type": "narration",
+          "emotion": "calm",
+          "emotion_intensity": 0.3,
+          "sfx_triggers": [],
+          "bgm_change": null,
+          "voice_file": "C:\\Users\\Admin\\Desktop\\TienAmCac\\backend\\assets\\tts_segments\\a378af77-b4d2-49ca-a54f-f352c1ab0e69\\ch000\\seg0001.wav",
+          "voice_profile": {
+            "voice": "vi-VN-HoaiMyNeural",
+            "rate": "-8%",
+            "pitch": "+0Hz"
+          },
+          "speaker_key": null,
+          "duration_sec": 5.736
+        },
+        {
+          "index": 2,
+          "text": "\"Vân Tiêu! Ngươi ra đây ngay!\"",
+          "is_dialog": true,
+          "speaker": "Vân Tiêu",
+          "character_type": "male_young",
+          "scene_type": "dialog",
+          "emotion": "calm",
+          "emotion_intensity": 0.3,
+          "sfx_triggers": [],
+          "bgm_change": "bgm_ambient_light.mp3",
+          "voice_file": "C:\\Users\\Admin\\Desktop\\TienAmCac\\backend\\assets\\tts_segments\\a378af77-b4d2-49ca-a54f-f352c1ab0e69\\ch000\\seg0002.wav",
+          "voice_profile": {
+            "voice": "vi-VN-NamMinhNeural",
+            "rate": "+2%",
+            "pitch": "+0Hz"
+          },
+          "speaker_key": "vân tiêu",
+          "duration_sec": 3.36
+        },
+        {
+          "index": 3,
+          "text": "Cậu mở mắt, thấy sư phụ - Lão Kiếm Tiên - đứng bên cạnh với ánh mắt nghiêm nghị.",
+          "is_dialog": false,
+          "speaker": null,
+          "character_type": "narrator",
+          "scene_type": "battle",
+          "emotion": "tense",
+          "emotion_intensity": 0.8,
+          "sfx_triggers": [
+            "sfx_sword_draw.wav"
+          ],
+          "bgm_change": "bgm_epic_battle.mp3",
+          "voice_file": "C:\\Users\\Admin\\Desktop\\TienAmCac\\backend\\assets\\tts_segments\\a378af77-b4d2-49ca-a54f-f352c1ab0e69\\ch000\\seg0003.wav",
+          "voice_profile": {
+            "voice": "vi-VN-HoaiMyNeural",
+            "rate": "-8%",
+            "pitch": "+0Hz"
+          },
+          "speaker_key": null,
+          "duration_sec": 6.192
+        },
+        {
+          "index": 4,
+          "text": "\"Sư phụ, đệ tử có lỗi gì chăng?\" Vân Tiêu cúi đầu hỏi.",
+          "is_dialog": true,
+          "speaker": "Vân Tiêu",
+          "character_type": "male_young",
+          "scene_type": "dialog",
+          "emotion": "calm",
+          "emotion_intensity": 0.3,
+          "sfx_triggers": [],
+          "bgm_change": "bgm_ambient_light.mp3",
+          "voice_file": "C:\\Users\\Admin\\Desktop\\TienAmCac\\backend\\assets\\tts_segments\\a378af77-b4d2-49ca-a54f-f352c1ab0e69\\ch000\\seg0004.wav",
+          "voice_profile": {
+            "voice": "vi-VN-NamMinhNeural",
+            "rate": "+2%",
+            "pitch": "+0Hz"
+          },
+          "speaker_key": "vân tiêu",
+          "duration_sec": 5.28
+        },
+        {
+          "index": 5,
+          "text": "\"Ta muốn thử nghiệm căn cơ của ngươi hôm nay. Nếu ngươi thực sự có tiên duyên, ta sẽ truyền thụ Cửu Thiên Kiếm Quyết.\"",
+          "is_dialog": true,
+          "speaker": "Ta",
+          "character_type": "immortal",
+          "scene_type": "dialog",
+          "emotion": "calm",
+          "emotion_intensity": 0.8,
+          "sfx_triggers": [
+            "sfx_sword_draw.wav"
+          ],
+          "bgm_change": null,
+          "voice_file": "C:\\Users\\Admin\\Desktop\\TienAmCac\\backend\\assets\\tts_segments\\a378af77-b4d2-49ca-a54f-f352c1ab0e69\\ch000\\seg0005.wav",
+          "voice_profile": {
+            "voice": "vi-VN-NamMinhNeural",
+            "rate": "-15%",
+            "pitch": "-4Hz"
+          },
+          "speaker_key": "ta",
+          "duration_sec": 9.072
+        },
+        {
+          "index": 6,
+          "text": "Vân Tiêu ngẩng đầu, ánh mắt sáng rực. Đó là bí kíp mà bao nhiêu đệ tử mơ ước trong cả trăm năm.",
+          "is_dialog": false,
+          "speaker": null,
+          "character_type": "narrator",
+          "scene_type": "narration",
+          "emotion": "calm",
+          "emotion_intensity": 0.3,
+          "sfx_triggers": [],
+          "bgm_change": "bgm_ambient_light.mp3",
+          "voice_file": "C:\\Users\\Admin\\Desktop\\TienAmCac\\backend\\assets\\tts_segments\\a378af77-b4d2-49ca-a54f-f352c1ab0e69\\ch000\\seg0006.wav",
+          "voice_profile": {
+            "voice": "vi-VN-HoaiMyNeural",
+            "rate": "-8%",
+            "pitch": "+0Hz"
+          },
+          "speaker_key": null,
+          "duration_sec": 7.824
+        },
+        {
+          "index": 7,
+          "text": "Lão sư phụ giơ tay lên, một luồng linh lực xanh biếc từ bàn tay ông tỏa ra, bao phủ lấy Vân Tiêu.",
+          "is_dialog": false,
+          "speaker": null,
+          "character_type": "narrator",
+          "scene_type": "narration",
+          "emotion": "calm",
+          "emotion_intensity": 0.3,
+          "sfx_triggers": [
+            "sfx_qi_gathering.wav"
+          ],
+          "bgm_change": null,
+          "voice_file": "C:\\Users\\Admin\\Desktop\\TienAmCac\\backend\\assets\\tts_segments\\a378af77-b4d2-49ca-a54f-f352c1ab0e69\\ch000\\seg0007.wav",
+          "voice_profile": {
+            "voice": "vi-VN-HoaiMyNeural",
+            "rate": "-8%",
+            "pitch": "+0Hz"
+          },
+          "speaker_key": null,
+          "duration_sec": 7.08
+        },
+        {
+          "index": 8,
+          "text": "Một khoảnh khắc sau, ông gật đầu: \"Căn cơ bậc thượng. Đúng là thiên tài trăm năm mới có một.\"",
+          "is_dialog": false,
+          "speaker": null,
+          "character_type": "narrator",
+          "scene_type": "narration",
+          "emotion": "calm",
+          "emotion_intensity": 0.3,
+          "sfx_triggers": [],
+          "bgm_change": null,
+          "voice_file": "C:\\Users\\Admin\\Desktop\\TienAmCac\\backend\\assets\\tts_segments\\a378af77-b4d2-49ca-a54f-f352c1ab0e69\\ch000\\seg0008.wav",
+          "voice_profile": {
+            "voice": "vi-VN-HoaiMyNeural",
+            "rate": "-8%",
+            "pitch": "+0Hz"
+          },
+          "speaker_key": null,
+          "duration_sec": 7.56
+        }
+      ],
+      "characters": [
+        {
+          "name": "Vân Tiêu",
+          "character_type": "male_young",
+          "description": null,
+          "voice_config": null
+        },
+        {
+          "name": "đầu",
+          "character_type": "male_young",
+          "description": null,
+          "voice_config": null
+        },
+        {
+          "name": "ánh",
+          "character_type": "male_young",
+          "description": null,
+          "voice_config": null
+        },
+        {
+          "name": "ông",
+          "character_type": "male_young",
+          "description": null,
+          "voice_config": null
+        },
+        {
+          "name": "Thạch Hà",
+          "character_type": "male_young",
+          "description": null,
+          "voice_config": null
+        },
+        {
+          "name": "Linh Tiêu",
+          "character_type": "male_young",
+          "description": null,
+          "voice_config": null
+        }
+      ]
+    },
+    {
+      "index": 1,
+      "title": "Chương 2: Đột phá cảnh giới",
+      "raw_text": "Ba tháng sau khi nhận được Cửu Thiên Kiếm Quyết, Vân Tiêu ngày đêm khổ luyện.\nCậu tập kiếm từ bình minh đến hoàng hôn, mồ hôi thấm ướt đẫm áo mà không nghỉ.\n\nĐêm đó, khi trăng lên đỉnh núi, Vân Tiêu cảm thấy linh lực trong dantian sôi trào.\n\n\"Đây rồi! Đây là thời cơ đột phá!\" Cậu la to trong lòng và ngồi kiết già, vận hành công pháp.\n\nLuồng khí hỏa bùng lên như ngọn lửa trong lồng ngực, rồi băng giá như sét lôi xuyên thấu toàn thân.\nBầu trời đột nhiên tối sầm lại. Sấm sét nổi lên vang động cả núi rừng.\n\n\"Đột phá tầng thứ ba — Luyện Khí Kỳ!\" Lão Kiếm Tiên đứng xa nhìn mà gật đầu mỉm cười.\n\nMột tiếng nổ lớn vang lên. Vân Tiêu đứng dậy, toàn thân tỏa hào quang bạch kim.\nCậu cảm thấy sức mạnh trong người tăng gấp bội, kiếm ý tuôn trào không ngớt.\n\n\"Ta sẽ bước lên đỉnh cao của tu tiên,\" cậu tự nhủ, giọng điềm tĩnh mà chắc chắn như núi.",
+      "segments": [
+        {
+          "index": 0,
+          "text": "Ba tháng sau khi nhận được Cửu Thiên Kiếm Quyết, Vân Tiêu ngày đêm khổ luyện. Cậu tập kiếm từ bình minh đến hoàng hôn, mồ hôi thấm ướt đẫm áo mà không nghỉ.",
+          "is_dialog": false,
+          "speaker": null,
+          "character_type": "narrator",
+          "scene_type": "battle",
+          "emotion": "tense",
+          "emotion_intensity": 0.8,
+          "sfx_triggers": [
+            "sfx_sword_draw.wav"
+          ],
+          "bgm_change": "bgm_epic_battle.mp3",
+          "voice_file": "C:\\Users\\Admin\\Desktop\\TienAmCac\\backend\\assets\\tts_segments\\a378af77-b4d2-49ca-a54f-f352c1ab0e69\\ch001\\seg0000.wav",
+          "voice_profile": {
+            "voice": "vi-VN-HoaiMyNeural",
+            "rate": "-8%",
+            "pitch": "+0Hz"
+          },
+          "speaker_key": null,
+          "duration_sec": 10.872
+        },
+        {
+          "index": 1,
+          "text": "Đêm đó, khi trăng lên đỉnh núi, Vân Tiêu cảm thấy linh lực trong dantian sôi trào.",
+          "is_dialog": false,
+          "speaker": null,
+          "character_type": "narrator",
+          "scene_type": "narration",
+          "emotion": "calm",
+          "emotion_intensity": 0.3,
+          "sfx_triggers": [
+            "sfx_qi_gathering.wav"
+          ],
+          "bgm_change": "bgm_ambient_light.mp3",
+          "voice_file": "C:\\Users\\Admin\\Desktop\\TienAmCac\\backend\\assets\\tts_segments\\a378af77-b4d2-49ca-a54f-f352c1ab0e69\\ch001\\seg0001.wav",
+          "voice_profile": {
+            "voice": "vi-VN-HoaiMyNeural",
+            "rate": "-8%",
+            "pitch": "+0Hz"
+          },
+          "speaker_key": null,
+          "duration_sec": 6.168
+        },
+        {
+          "index": 2,
+          "text": "\"Đây rồi! Đây là thời cơ đột phá!\" Cậu la to trong lòng và ngồi kiết già, vận hành công pháp.",
+          "is_dialog": true,
+          "speaker": "Cậu",
+          "character_type": "male_young",
+          "scene_type": "dialog",
+          "emotion": "calm",
+          "emotion_intensity": 0.6,
+          "sfx_triggers": [
+            "sfx_qi_explosion.wav"
+          ],
+          "bgm_change": "bgm_ambient_light.mp3",
+          "voice_file": "C:\\Users\\Admin\\Desktop\\TienAmCac\\backend\\assets\\tts_segments\\a378af77-b4d2-49ca-a54f-f352c1ab0e69\\ch001\\seg0002.wav",
+          "voice_profile": {
+            "voice": "vi-VN-NamMinhNeural",
+            "rate": "+0%",
+            "pitch": "+0Hz"
+          },
+          "speaker_key": "cậu",
+          "duration_sec": 7.92
+        },
+        {
+          "index": 3,
+          "text": "Luồng khí hỏa bùng lên như ngọn lửa trong lồng ngực, rồi băng giá như sét lôi xuyên thấu toàn thân. Bầu trời đột nhiên tối sầm lại. Sấm sét nổi lên vang động cả núi rừng.",
+          "is_dialog": false,
+          "speaker": null,
+          "character_type": "narrator",
+          "scene_type": "narration",
+          "emotion": "calm",
+          "emotion_intensity": 0.3,
+          "sfx_triggers": [
+            "sfx_fire_blast.wav",
+            "sfx_thunder_strike.wav"
+          ],
+          "bgm_change": "bgm_ambient_light.mp3",
+          "voice_file": "C:\\Users\\Admin\\Desktop\\TienAmCac\\backend\\assets\\tts_segments\\a378af77-b4d2-49ca-a54f-f352c1ab0e69\\ch001\\seg0003.wav",
+          "voice_profile": {
+            "voice": "vi-VN-HoaiMyNeural",
+            "rate": "-8%",
+            "pitch": "+0Hz"
+          },
+          "speaker_key": null,
+          "duration_sec": 12.528
+        },
+        {
+          "index": 4,
+          "text": "\"Đột phá tầng thứ ba — Luyện Khí Kỳ!\" Lão Kiếm Tiên đứng xa nhìn mà gật đầu mỉm cười.",
+          "is_dialog": true,
+          "speaker": "Lão Kiếm Tiên",
+          "character_type": "male_elder",
+          "scene_type": "dialog",
+          "emotion": "calm",
+          "emotion_intensity": 0.8,
+          "sfx_triggers": [
+            "sfx_sword_draw.wav",
+            "sfx_qi_explosion.wav"
+          ],
+          "bgm_change": "bgm_ambient_light.mp3",
+          "voice_file": "C:\\Users\\Admin\\Desktop\\TienAmCac\\backend\\assets\\tts_segments\\a378af77-b4d2-49ca-a54f-f352c1ab0e69\\ch001\\seg0004.wav",
+          "voice_profile": {
+            "voice": "vi-VN-NamMinhNeural",
+            "rate": "-12%",
+            "pitch": "-6Hz"
+          },
+          "speaker_key": "lão kiếm tiên",
+          "duration_sec": 7.728
+        },
+        {
+          "index": 5,
+          "text": "Một tiếng nổ lớn vang lên. Vân Tiêu đứng dậy, toàn thân tỏa hào quang bạch kim. Cậu cảm thấy sức mạnh trong người tăng gấp bội, kiếm ý tuôn trào không ngớt.",
+          "is_dialog": false,
+          "speaker": null,
+          "character_type": "narrator",
+          "scene_type": "battle",
+          "emotion": "tense",
+          "emotion_intensity": 0.8,
+          "sfx_triggers": [
+            "sfx_sword_draw.wav",
+            "sfx_big_explosion.wav"
+          ],
+          "bgm_change": "bgm_epic_battle.mp3",
+          "voice_file": "C:\\Users\\Admin\\Desktop\\TienAmCac\\backend\\assets\\tts_segments\\a378af77-b4d2-49ca-a54f-f352c1ab0e69\\ch001\\seg0005.wav",
+          "voice_profile": {
+            "voice": "vi-VN-HoaiMyNeural",
+            "rate": "-8%",
+            "pitch": "+0Hz"
+          },
+          "speaker_key": null,
+          "duration_sec": 12.072
+        },
+        {
+          "index": 6,
+          "text": "\"Ta sẽ bước lên đỉnh cao của tu tiên,\" cậu tự nhủ, giọng điềm tĩnh mà chắc chắn như núi.",
+          "is_dialog": true,
+          "speaker": "ậu",
+          "character_type": "male_young",
+          "scene_type": "dialog",
+          "emotion": "calm",
+          "emotion_intensity": 0.3,
+          "sfx_triggers": [],
+          "bgm_change": "bgm_ambient_light.mp3",
+          "voice_file": "C:\\Users\\Admin\\Desktop\\TienAmCac\\backend\\assets\\tts_segments\\a378af77-b4d2-49ca-a54f-f352c1ab0e69\\ch001\\seg0006.wav",
+          "voice_profile": {
+            "voice": "vi-VN-NamMinhNeural",
+            "rate": "+0%",
+            "pitch": "+0Hz"
+          },
+          "speaker_key": "ậu",
+          "duration_sec": 6.144
+        }
+      ],
+      "characters": [
+        {
+          "name": "Cậu",
+          "character_type": "male_young",
+          "description": null,
+          "voice_config": null
+        },
+        {
+          "name": "Vân Tiêu",
+          "character_type": "male_young",
+          "description": null,
+          "voice_config": null
+        },
+        {
+          "name": "đỉnh",
+          "character_type": "male_young",
+          "description": null,
+          "voice_config": null
+        },
+        {
+          "name": "Đây",
+          "character_type": "male_young",
+          "description": null,
+          "voice_config": null
+        },
+        {
+          "name": "đột",
+          "character_type": "male_young",
+          "description": null,
+          "voice_config": null
+        },
+        {
+          "name": "được Cửu Thiên",
+          "character_type": "male_young",
+          "description": null,
+          "voice_config": null
+        }
+      ]
+    }
+  ],
+  "output_path": null,
+  "error": "'charmap' codec can't encode characters in position 112-113: character maps to <undefined>",
+  "created_at": "2026-04-26T11:56:21.885751",
+  "updated_at": "2026-04-26T11:56:21.885751",
+  "meta": {},
+  "progress": {
+    "parsing": 100,
+    "analyzing": 100,
+    "voice": 100,
+    "fx": 100,
+    "mixing": 100
+  }
+}

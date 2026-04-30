@@ -1,0 +1,39 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+venv/
+.venv-win/
+backend/venv/
+backend/.venv-win/
+.env
+
+# Tests
+.pytest_cache/
+
+# Project Specific Assets (Large files / sensitive data)
+assets/uploads/
+assets/output/
+assets/tts_segments/
+assets/video_sources/
+backend/assets/uploads/
+backend/assets/output/
+backend/assets/video_output/
+backend/assets/models/
+backend/assets/bgm/
+backend/assets/sfx/
+
+# Logs
+*.log
+crash_log.txt
+
+# Tools and binaries
+.tools/
+
+# IDE
+.vscode/
+.idea/
+
+# OS
+.DS_Store
+Thumbs.db

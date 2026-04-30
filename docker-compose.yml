@@ -1,0 +1,38 @@
+version: "3.8"
+
+services:
+  web:
+    build: .
+    container_name: tienamcac-web
+    ports:
+      - "8000:8000"
+    environment:
+      - REDIS_URL=redis://redis:6379/0
+      # Cho phép Container truy cập tới phần mềm Ollama cài trực tiếp trên máy tính Windows (localhost)
+      - OLLAMA_BASE_URL=http://host.docker.internal:11434
+    volumes:
+      - ./backend/assets:/app/backend/assets
+    depends_on:
+      - redis
+    restart: unless-stopped
+
+  worker:
+    build: .
+    container_name: tienamcac-worker
+    # Khởi chạy Celery Worker để chia tải xử lý nền (Audio Mix, TTS, AI Analyzer)
+    command: ["celery", "-A", "backend.core.orchestrator.celery_app", "worker", "--loglevel=info"]
+    environment:
+      - REDIS_URL=redis://redis:6379/0
+      - OLLAMA_BASE_URL=http://host.docker.internal:11434
+    volumes:
+      - ./backend/assets:/app/backend/assets
+    depends_on:
+      - redis
+    restart: unless-stopped
+
+  redis:
+    image: redis:7-alpine
+    container_name: tienamcac-redis
+    ports:
+      - "6379:6379"
+    restart: unless-stopped

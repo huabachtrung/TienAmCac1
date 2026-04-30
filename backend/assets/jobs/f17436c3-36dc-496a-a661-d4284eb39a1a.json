@@ -1,0 +1,22 @@
+{
+  "id": "f17436c3-36dc-496a-a661-d4284eb39a1a",
+  "status": "pending",
+  "filename": "prog.txt",
+  "file_path": "/tmp/prog.txt",
+  "media_kind": "audio",
+  "total_chapters": 0,
+  "processed_chapters": 0,
+  "chapters": [],
+  "output_path": null,
+  "error": null,
+  "created_at": "2026-04-25T04:01:13.144230",
+  "updated_at": "2026-04-25T04:01:13.144230",
+  "meta": {},
+  "progress": {
+    "parsing": 100,
+    "analyzing": 50,
+    "voice": 0,
+    "fx": 0,
+    "mixing": 0
+  }
+}

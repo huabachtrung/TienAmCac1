@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tien Am Cac</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;700;800&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <link rel="stylesheet" href="styles.css?v=20260430-video-edit">
+</head>
+<body>
+    <div class="bg-orb orb-1"></div>
+    <div class="bg-orb orb-2"></div>
+    <div class="bg-orb orb-3"></div>
+    <div class="glass-overlay"></div>
+
+    <div class="app-container">
+        <header class="header blur-backdrop">
+            <div class="logo">
+                <i data-lucide="sparkles" class="icon-primary"></i>
+                <div>
+                    <h1 class="gradient-text">Tien Am Cac</h1>
+                    <p class="subtitle">Audiobook pipeline va review video short-form tu dong</p>
+                </div>
+            </div>
+        </header>
+
+        <main class="main-content">
+            <section class="panel upload-panel blur-backdrop">
+                <div class="mode-switch">
+                    <button id="modeAudio" class="mode-btn active" type="button">Audiobook</button>
+                    <button id="modeVideo" class="mode-btn" type="button">Video Review</button>
+                    <button id="modeEdit" class="mode-btn" type="button">Video Edit</button>
+                </div>
+
+                <div id="audioForm" class="mode-panel">
+                    <h2>Xu ly truyen thanh audio</h2>
+                    <p class="panel-desc">Tai len file PDF, EPUB hoac TXT, chon khoang chuong, he thong tu tao audio output.</p>
+
+                    <div class="upload-zone" id="audioUploadZone">
+                        <input type="file" id="audioFileInput" accept=".pdf,.epub,.txt" hidden>
+                        <i data-lucide="file-up" class="icon-large pulse-animation"></i>
+                        <h3>Keo tha file truyen vao day</h3>
+                        <p class="text-sm">Ho tro .pdf, .epub, .txt</p>
+                        <button class="btn btn-primary mt-4" id="btnBrowseAudio" type="button">Chon file truyen</button>
+                        <div id="audioFileInfo" class="hidden mt-4 inline-note"></div>
+                    </div>
+
+                    <div class="chapter-selection mt-4">
+                        <div class="field-grid">
+                            <label>
+                                <span>Từ chương</span>
+                                <input type="number" id="startChapter" class="input-modern" min="1" value="1">
+                            </label>
+                            <label>
+                                <span>Đến chương</span>
+                                <input type="number" id="endChapter" class="input-modern" min="1" value="1">
+                            </label>
+                        </div>
+                    </div>
+
+                    <!-- Narrator gender selector -->
+                    <div class="narrator-gender-group mt-4">
+                        <span class="narrator-label">
+                            <i data-lucide="mic-2" style="width:14px;height:14px;vertical-align:middle;"></i>
+                            Giọng narrator (dẫn truyện)
+                        </span>
+                        <div class="gender-options">
+                            <label class="gender-option" id="labelGenderFemale">
+                                <input type="radio" name="narratorGender" id="genderFemale" value="female" checked>
+                                <span class="gender-pill">
+                                    <i data-lucide="user" style="width:13px;height:13px;"></i>
+                                    Nữ (HoaiMy)
+                                </span>
+                            </label>
+                            <label class="gender-option" id="labelGenderMale">
+                                <input type="radio" name="narratorGender" id="genderMale" value="male">
+                                <span class="gender-pill">
+                                    <i data-lucide="user" style="width:13px;height:13px;"></i>
+                                    Nam (NamMinh)
+                                </span>
+                            </label>
+                        </div>
+                        <p class="narrator-hint">Giọng nhân vật đối thoại vẫn phân biệt riêng theo giới tính nhân vật.</p>
+                    </div>
+
+                    <button id="btnStartAudio" class="btn btn-glow w-full mt-6" disabled type="button">
+                        <i data-lucide="headphones"></i>
+                        Tạo audiobook
+                    </button>
+                </div>
+
+                <div id="videoForm" class="mode-panel hidden">
+                    <h2>Tao video review tu dong</h2>
+                    <p class="panel-desc">Chon video trong may hoac dan link YouTube, TikTok. He thong se tom tat, long tieng, cat canh, them subtitle va render video output.</p>
+
+                    <div class="field-stack">
+                        <label>
+                            <span>Link video nguon</span>
+                            <input type="url" id="sourceUrl" class="input-modern" placeholder="https://www.youtube.com/... hoac https://www.tiktok.com/...">
+                        </label>
+                        <div class="divider-label">hoac</div>
+                        <div class="upload-zone compact" id="videoUploadZone">
+                            <input type="file" id="videoFileInput" accept=".mp4,.mov,.mkv,.webm,.avi" hidden>
+                            <i data-lucide="clapperboard" class="icon-large"></i>
+                            <h3>Chon video tu may</h3>
+                            <p class="text-sm">Ho tro .mp4, .mov, .mkv, .webm, .avi</p>
+                            <button class="btn btn-primary mt-4" id="btnBrowseVideo" type="button">Chon file video</button>
+                            <div id="videoFileInfo" class="hidden mt-4 inline-note"></div>
+                        </div>
+
+                        <div class="field-grid">
+                            <label>
+                                <span>Kiểu khung</span>
+                                <select id="videoOrientation" class="input-modern">
+                                    <option value="vertical">Dọc (9:16 — TikTok/Reels)</option>
+                                    <option value="horizontal">Ngang (16:9 — YouTube)</option>
+                                </select>
+                            </label>
+                            <label>
+                                <span>Thời lượng review (giây)</span>
+                                <input type="number" id="maxDuration" class="input-modern" min="15" max="120" value="45">
+                            </label>
+                        </div>
+                    </div>
+
+                    <p class="narrator-hint" style="margin-top:8px;">
+                        <i data-lucide="info" style="width:13px;height:13px;vertical-align:middle;"></i>
+                        Phụ đề và lời bình hoàn toàn tiếng Việt. Thời lượng output đúng bằng số giây đã nhập.
+                    </p>
+
+                    <button id="btnStartVideo" class="btn btn-glow w-full mt-6" type="button">
+                        <i data-lucide="film"></i>
+                        Tạo video review
+                    </button>
+                </div>
+
+                <div id="editForm" class="mode-panel hidden">
+                    <h2>Hau ky video raw tu dong</h2>
+                    <p class="panel-desc">Tai video raw hoac dan link. He thong se giu full video va tu them caption dong, text popup, icon, animation, camera motion, BGM va audio effect.</p>
+
+                    <div class="field-stack">
+                        <label>
+                            <span>Link video nguon</span>
+                            <input type="url" id="editSourceUrl" class="input-modern" placeholder="https://www.youtube.com/... hoac link video ho tro">
+                        </label>
+                        <div class="divider-label">hoac</div>
+                        <div class="upload-zone compact" id="editUploadZone">
+                            <input type="file" id="editFileInput" accept=".mp4,.mov,.mkv,.webm,.avi" hidden>
+                            <i data-lucide="wand-sparkles" class="icon-large"></i>
+                            <h3>Chon video raw</h3>
+                            <p class="text-sm">Ho tro .mp4, .mov, .mkv, .webm, .avi</p>
+                            <button class="btn btn-primary mt-4" id="btnBrowseEdit" type="button">Chon file video</button>
+                            <div id="editFileInfo" class="hidden mt-4 inline-note"></div>
+                        </div>
+
+                        <div class="field-grid">
+                            <label>
+                                <span>Kieu khung output</span>
+                                <select id="editOrientation" class="input-modern">
+                                    <option value="vertical">Doc (9:16 - TikTok/Reels/Shorts)</option>
+                                    <option value="horizontal">Ngang (16:9 - YouTube)</option>
+                                </select>
+                            </label>
+                            <label>
+                                <span>Preset hau ky</span>
+                                <select id="editStyle" class="input-modern">
+                                    <option value="creator_viral">Creator viral</option>
+                                </select>
+                            </label>
+                        </div>
+                    </div>
+
+                    <p class="narrator-hint" style="margin-top:8px;">
+                        <i data-lucide="info" style="width:13px;height:13px;vertical-align:middle;"></i>
+                        Uu tien Remotion neu da cai package Node; neu khong, he thong tu fallback ffmpeg va van tao output.
+                    </p>
+
+                    <button id="btnStartEdit" class="btn btn-glow w-full mt-6" type="button">
+                        <i data-lucide="sparkles"></i>
+                        Tao video edit
+                    </button>
+                </div>
+            </section>
+
+            <section class="panel status-panel blur-backdrop">
+                <h2>Tien trinh xu ly</h2>
+                <div id="zeroState" class="zero-state">
+                    <i data-lucide="layers-3" class="icon-muted"></i>
+                    <p>Chua co job nao dang chay. Chon audiobook, video review hoac video edit de bat dau.</p>
+                </div>
+
+                <div id="processingEngine" class="processing-engine hidden">
+                    <div class="job-id-display">Job: <span id="currentJobId">---</span></div>
+                    <ul class="timeline">
+                        <li class="step" id="step-parsing">
+                            <div class="step-icon"><i data-lucide="inbox"></i></div>
+                            <div class="step-content">
+                                <h4>1. Nap nguon va chuan hoa input</h4>
+                                <div class="progress-bar-bg"><div class="progress-bar-fill" id="bar-parsing"></div></div>
+                            </div>
+                        </li>
+                        <li class="step" id="step-analyzing">
+                            <div class="step-icon"><i data-lucide="brain-circuit"></i></div>
+                            <div class="step-content">
+                                <h4>2. Phan tich noi dung va tom tat</h4>
+                                <div class="progress-bar-bg"><div class="progress-bar-fill" id="bar-analyzing"></div></div>
+                            </div>
+                        </li>
+                        <li class="step" id="step-voice">
+                            <div class="step-icon"><i data-lucide="mic-2"></i></div>
+                            <div class="step-content">
+                                <h4>3. Tao voice, caption va overlay</h4>
+                                <div class="progress-bar-bg"><div class="progress-bar-fill" id="bar-voice"></div></div>
+                            </div>
+                        </li>
+                        <li class="step" id="step-fx">
+                            <div class="step-icon"><i data-lucide="music-4"></i></div>
+                            <div class="step-content">
+                                <h4>4. Chuan bi BGM, SFX va media</h4>
+                                <div class="progress-bar-bg"><div class="progress-bar-fill" id="bar-fx"></div></div>
+                            </div>
+                        </li>
+                        <li class="step" id="step-mixing">
+                            <div class="step-icon"><i data-lucide="wand-sparkles"></i></div>
+                            <div class="step-content">
+                                <h4>5. Render output cuoi</h4>
+                                <div class="progress-bar-bg"><div class="progress-bar-fill" id="bar-mixing"></div></div>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+
+                <div id="resultPlayer" class="result-player hidden mt-6">
+                    <div class="success-banner">
+                        <i data-lucide="badge-check" class="icon-success"></i>
+                        <span id="resultMessage">Output da san sang.</span>
+                    </div>
+                    <audio id="audioPlayer" controls class="w-full hidden mt-4"></audio>
+                    <video id="videoPlayer" controls class="w-full hidden mt-4" playsinline></video>
+                    <div id="resultMeta" class="result-meta mt-4 hidden"></div>
+                    <a id="btnDownload" href="#" target="_blank" class="btn btn-secondary w-full mt-4" download>
+                        <i data-lucide="download"></i>
+                        Tai output
+                    </a>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <div id="toast" class="toast hidden">
+        <i data-lucide="alert-circle"></i>
+        <span id="toastMessage">Da xay ra loi.</span>
+    </div>
+
+    <script src="app.js?v=20260430-video-edit"></script>
+    <script>lucide.createIcons();</script>
+</body>
+</html>

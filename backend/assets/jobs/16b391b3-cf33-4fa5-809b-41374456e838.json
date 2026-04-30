@@ -1,0 +1,51 @@
+{
+  "id": "16b391b3-cf33-4fa5-809b-41374456e838",
+  "status": "done",
+  "filename": "MAI_M_I_CHO_C_S_-_T_p_01_Vi_t_sub [ywUztJ8yTnw].mp4",
+  "file_path": "C:\\Users\\Admin\\Desktop\\TienAmCac\\backend\\assets\\uploads\\16b391b3-cf33-4fa5-809b-41374456e838\\MAI_M_I_CHO_C_S_-_T_p_01_Vi_t_sub [ywUztJ8yTnw].mp4",
+  "media_kind": "video",
+  "total_chapters": 0,
+  "processed_chapters": 0,
+  "chapters": [],
+  "output_path": "C:\\Users\\Admin\\Desktop\\TienAmCac\\backend\\assets\\video_output\\16b391b3-cf33-4fa5-809b-41374456e838\\edited_output.mp4",
+  "error": null,
+  "created_at": "2026-04-30T11:51:31.301203",
+  "updated_at": "2026-04-30T11:51:31.301203",
+  "meta": {
+    "video_task": "edit",
+    "orientation": "horizontal",
+    "style": "creator_viral",
+    "keep_full_video": true,
+    "source_url": "https://www.youtube.com/watch?v=ywUztJ8yTnw",
+    "source_path": "C:\\Users\\Admin\\Desktop\\TienAmCac\\backend\\assets\\uploads\\16b391b3-cf33-4fa5-809b-41374456e838\\MAI_M_I_CHO_C_S_-_T_p_01_Vi_t_sub [ywUztJ8yTnw].mp4",
+    "source_meta": {
+      "duration_sec": 1436.04,
+      "width": 640,
+      "height": 360,
+      "fps": 23.976023976023978,
+      "has_audio": true
+    },
+    "transcript_preview": "人の無くもりをもっと言う 人間株を操縦終了ね いくども当たんの効きに落ち行ったが その旅に洗える移動な手を作して立て直した その積み重ねが共同主に決めずしたんだ ん? デリシャス 独物はありません ノープロブレムですプレジテンター パモツそれから夏ミサ 結婚を目でと ジョーブナアとちぎの男の子を ドバードバー運転でくれ 完璧! あわーい! あ、プレジテンと… 悪くたたしが… 何する? ちょっとくらめくただ! そこもったら分かってしまい! ねぇ?どうやったの? 自分での独物を私の意味で 独物を盛るなんて む 独物の大体に交通を制装した ことよ? どうやって? 3ヶ月間独物の食事にビデオの独物を混ぜ込み 知事をでもしながりと一緒にした でもそれってわかみたいに面倒じゃな まあな 誰もそんなバカゲたことをやるとは思わない だからこそ俺たちは仕事を追い込んできる ところでお兄ちゃん あのけ、考えて",
+    "transcript_language": "ja",
+    "audio_analysis_summary": {
+      "beats": 40,
+      "energy_peaks": 80,
+      "silences": 40
+    },
+    "edit_plan_path": "C:\\Users\\Admin\\Desktop\\TienAmCac\\backend\\assets\\video_temp\\16b391b3-cf33-4fa5-809b-41374456e838\\edit_plan.json",
+    "edit_plan_summary": {
+      "captions": 501,
+      "text_popups": 16,
+      "icons": 0,
+      "sfx": 12
+    },
+    "renderer": "ffmpeg_fallback"
+  },
+  "progress": {
+    "parsing": 100,
+    "analyzing": 100,
+    "voice": 0,
+    "fx": 100,
+    "mixing": 100
+  }
+}

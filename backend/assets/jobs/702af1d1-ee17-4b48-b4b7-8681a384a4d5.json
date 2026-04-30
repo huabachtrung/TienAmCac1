@@ -1,0 +1,22 @@
+{
+  "id": "702af1d1-ee17-4b48-b4b7-8681a384a4d5",
+  "status": "pending",
+  "filename": "test.pdf",
+  "file_path": "/tmp/test.pdf",
+  "media_kind": "audio",
+  "total_chapters": 0,
+  "processed_chapters": 0,
+  "chapters": [],
+  "output_path": null,
+  "error": null,
+  "created_at": "2026-04-24T07:19:47.464468",
+  "updated_at": "2026-04-24T07:19:47.464468",
+  "meta": {},
+  "progress": {
+    "parsing": 0,
+    "analyzing": 0,
+    "voice": 0,
+    "fx": 0,
+    "mixing": 0
+  }
+}

@@ -1,0 +1,68 @@
+{
+  "id": "e109c0b2-214a-4b66-8941-15bca6d44698",
+  "status": "done",
+  "filename": "MAI_M_I_CHO_C_S_-_T_p_01_Vi_t_sub [ywUztJ8yTnw].mp4",
+  "file_path": "C:\\Users\\Admin\\Desktop\\TienAmCac\\backend\\assets\\uploads\\e109c0b2-214a-4b66-8941-15bca6d44698\\MAI_M_I_CHO_C_S_-_T_p_01_Vi_t_sub [ywUztJ8yTnw].mp4",
+  "media_kind": "video",
+  "total_chapters": 0,
+  "processed_chapters": 0,
+  "chapters": [],
+  "output_path": "C:\\Users\\Admin\\Desktop\\TienAmCac\\backend\\assets\\video_output\\e109c0b2-214a-4b66-8941-15bca6d44698\\review_output.mp4",
+  "error": null,
+  "created_at": "2026-04-30T11:11:06.510488",
+  "updated_at": "2026-04-30T11:11:06.510488",
+  "meta": {
+    "orientation": "vertical",
+    "style": "review_short",
+    "max_duration_sec": 45,
+    "source_url": "https://www.youtube.com/watch?v=ywUztJ8yTnw",
+    "source_path": "C:\\Users\\Admin\\Desktop\\TienAmCac\\backend\\assets\\uploads\\e109c0b2-214a-4b66-8941-15bca6d44698\\MAI_M_I_CHO_C_S_-_T_p_01_Vi_t_sub [ywUztJ8yTnw].mp4",
+    "source_meta": {
+      "duration_sec": 1436.04,
+      "width": 640,
+      "height": 360,
+      "fps": 23.976023976023978,
+      "has_audio": true
+    },
+    "transcript_preview": "人の無くもりをもっと言う 人間株を操縦終了ね いくども当たんの効きに落ち行ったが その旅に洗える移動な手を作して立て直した その積み重ねが共同主に決めずしたんだ ん? デリシャス 独物はありません ノープロブレムですプレジテンター パモツそれから夏ミサ 結婚を目でと ジョーブナーとちぎの男の子を ドバードバー運転でくれ 完璧! あわーい! プレッテンと 焼きたたつが なぜ? ちょっとくらめちゃったな そこもったら私じゃない ねぇ どうやったの? 自分での独物を出しない 独物を盛るなんて 無 独物の大体に交通を制装した こうとよ どうよって? 3ヶ月間独物の食事に ビデオの独物を混ぜ込み 知事料でもしながりとり出した でもそれって分かみたいに面倒じゃな まあな 誰もそんなバカゲたことをやると 思わない だからこそ俺たちは仕事を追い込んできる ところでお兄ちゃん あのけ 考えてくれた? あのけ",
+    "transcript_language": "ja",
+    "review_title": "MAI M I CHO C S - T p 01 Vi t sub ywUztJ8yTnw",
+    "review_script": "Chào các bạn! Hôm nay chúng ta cùng nhau review một video cực kỳ thú vị. Video này mang đến nội dung vô cùng thú vị và đáng xem. Mỗi khung hình đều được chăm chút kỹ lưỡng, thu hút người xem từ đầu đến cuối. Đây là nội dung không nên bỏ lỡ trong tuần này. Nếu",
+    "selected_ranges": [
+      {
+        "start": 113.05,
+        "end": 120.55
+      },
+      {
+        "start": 357.56,
+        "end": 365.06
+      },
+      {
+        "start": 596.5,
+        "end": 604.0
+      },
+      {
+        "start": 829.11,
+        "end": 836.61
+      },
+      {
+        "start": 1070.14,
+        "end": 1077.64
+      },
+      {
+        "start": 1310.82,
+        "end": 1318.32
+      }
+    ],
+    "subtitles_path": "C:\\Users\\Admin\\Desktop\\TienAmCac\\backend\\assets\\video_temp\\e109c0b2-214a-4b66-8941-15bca6d44698\\review_subtitles.srt",
+    "audio_mix_path": "C:\\Users\\Admin\\Desktop\\TienAmCac\\backend\\assets\\video_temp\\e109c0b2-214a-4b66-8941-15bca6d44698\\review_mix.wav",
+    "rendered_title": "MAI M I CHO C S - T p 01 Vi t sub ywUztJ8yTnw"
+  },
+  "progress": {
+    "parsing": 100,
+    "analyzing": 100,
+    "voice": 100,
+    "fx": 0,
+    "mixing": 100
+  }
+}

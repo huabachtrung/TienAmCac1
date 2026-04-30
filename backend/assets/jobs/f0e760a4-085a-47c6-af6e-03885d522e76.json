@@ -1,0 +1,27 @@
+{
+  "id": "f0e760a4-085a-47c6-af6e-03885d522e76",
+  "status": "failed",
+  "filename": "remote-video",
+  "file_path": "",
+  "media_kind": "video",
+  "total_chapters": 0,
+  "processed_chapters": 0,
+  "chapters": [],
+  "output_path": null,
+  "error": "ERROR: Unsupported URL: https://animehay01.site/xem-phim/jidou-hanbaiki-ni-umarekawatta-ore-wa-meikyuu-wo-samayou-3rd-season-tap-1-74495.html",
+  "created_at": "2026-04-25T04:46:59.702300",
+  "updated_at": "2026-04-25T04:46:59.702300",
+  "meta": {
+    "source_url": "https://animehay01.site/xem-phim/jidou-hanbaiki-ni-umarekawatta-ore-wa-meikyuu-wo-samayou-3rd-season-tap-1-74495.html",
+    "orientation": "vertical",
+    "style": "review_short",
+    "max_duration_sec": 30
+  },
+  "progress": {
+    "parsing": 15,
+    "analyzing": 0,
+    "voice": 0,
+    "fx": 0,
+    "mixing": 0
+  }
+}

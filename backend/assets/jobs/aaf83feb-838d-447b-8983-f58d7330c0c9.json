@@ -1,0 +1,22 @@
+{
+  "id": "aaf83feb-838d-447b-8983-f58d7330c0c9",
+  "status": "failed",
+  "filename": "book.pdf",
+  "file_path": "C:\\Users\\Admin\\Desktop\\TienAmCac\\backend\\assets\\uploads\\aaf83feb-838d-447b-8983-f58d7330c0c9\\book.pdf",
+  "media_kind": "audio",
+  "total_chapters": 0,
+  "processed_chapters": 0,
+  "chapters": [],
+  "output_path": null,
+  "error": "Failed to open file 'C:\\\\Users\\\\Admin\\\\Desktop\\\\TienAmCac\\\\backend\\\\assets\\\\uploads\\\\aaf83feb-838d-447b-8983-f58d7330c0c9\\\\book.pdf'.",
+  "created_at": "2026-04-24T07:16:00.746994",
+  "updated_at": "2026-04-24T07:16:00.746994",
+  "meta": {},
+  "progress": {
+    "parsing": 0,
+    "analyzing": 0,
+    "voice": 0,
+    "fx": 0,
+    "mixing": 0
+  }
+}
