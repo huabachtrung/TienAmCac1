@@ -1,0 +1,253 @@
+{
+  "id": "16ef190a-00e9-4d35-82af-423a9b4d604b",
+  "status": "done",
+  "filename": "Tu Tiên Trường Sinh, Cẩu Đạo Thành Tiên - Ngưu Nãi Gia Điểm Diêm.epub",
+  "file_path": "C:\\Users\\Admin\\Desktop\\TienAmCac\\backend\\assets\\uploads\\16ef190a-00e9-4d35-82af-423a9b4d604b\\Tu Tiên Trường Sinh, Cẩu Đạo Thành Tiên - Ngưu Nãi Gia Điểm Diêm.epub",
+  "media_kind": "audio",
+  "total_chapters": 1,
+  "processed_chapters": 1,
+  "chapters": [
+    {
+      "index": 2,
+      "title": "Chương 3",
+      "raw_text": "Tu Tiên Trường Sinh, Cẩu Đạo Thành Tiên\n\nTác giả: Ngưu Nãi Gia Điểm Diêm\n\nDịch giả: AI thienloitruc.com\n\nThể loại: Xuyên Không\n\nNguồn: Tuấn Trần\n\n—★—\n\nDTV-EBOOK\n\nGiới Thiệu\n\nLục Hiên xuyên không, đạt được trường sinh. Trong giới tu tiên, tu luyện Khí cảnh thọ nguyên 120 năm, Trúc Cơ 300 năm, Kim Đan 500 năm, Nguyên Anh 1000 năm... Tu tiên chính là tranh mệnh, theo đuổi Trường Sinh đại đạo. Lục Hiên tốt nghiệp ngay từ khi xuất môn, nên không vội vã. Tài năng không xuất sắc, thì thời gian sẽ bù đắp. Ngươi luyện khí năm mươi năm đại thành, ta trăm năm cũng đại thành. Ngươi trúc cơ hai trăm năm đỉnh phong, ta năm trăm năm cũng đỉnh phong. Ngươi kim đan bốn trăm năm nhập đạo, ta ngàn năm cẩu đạo cũng vô địch. Hiện tại không thắng được ngươi, không có nghĩa là tương lai cũng không thắng được. Khi ngươi chết, ta có thể nhảy disco trên mộ của ngươi, ngươi có tin không? Nhiều năm sau, Tiên Đế hoành hành tiên giới mấy chục vạn năm chưa từng bại trận, tuổi già gặp Thiên Nhân Ngũ Suy, lúc này, một thanh niên trẻ tuổi cầm một con lừa nhỏ, gõ cửa phòng Tiên Đế, đặt thanh đao lên cổ Tiên Đế, hỏi thăm một cách thân thiện: \"Tiên Đế đại nhân, ngài có nhớ ba mươi vạn năm trước ở trần gian, ngài đã mượn ta một viên Linh Thạch, hôm nay ta đến đòi nợ cả gốc lẫn lãi...\" Truyện có tốc độ ra chương nhanh, không phải tu tiên vô địch lưu, mà tu tiên từ từ, không có nữ chính (vì đối với tu tiên trường sinh, trăm năm như một thoáng, ngàn năm quá ngắn). Nhân vật chính không có thiên phú đặc biệt, chỉ có thọ mệnh vô tận (các công pháp cần tốn thọ mệnh thì không có tác dụng phụ với nhân vật chính). Con lừa của nhân vật chính cũng được hưởng trường sinh, nên chỉ có con lừa là bạn đồng hành lâu dài của nhân vật chính.",
+      "segments": [
+        {
+          "index": 0,
+          "text": "Tu Tiên Trường Sinh, Cẩu Đạo Thành Tiên",
+          "is_dialog": false,
+          "speaker": null,
+          "character_type": "narrator",
+          "scene_type": "narration",
+          "emotion": "calm",
+          "emotion_intensity": 0.3,
+          "sfx_triggers": [],
+          "bgm_change": "bgm_ambient_light.mp3",
+          "voice_file": "C:\\Users\\Admin\\Desktop\\TienAmCac\\backend\\assets\\output\\16ef190a-00e9-4d35-82af-423a9b4d604b\\chapter_000\\seg_0000.wav",
+          "voice_profile": null,
+          "speaker_key": null,
+          "duration_sec": 2.101
+        },
+        {
+          "index": 1,
+          "text": "Tác giả: Ngưu Nãi Gia Điểm Diêm",
+          "is_dialog": true,
+          "speaker": "Tác giả",
+          "character_type": "male_young",
+          "scene_type": "dialog",
+          "emotion": "calm",
+          "emotion_intensity": 0.3,
+          "sfx_triggers": [],
+          "bgm_change": "bgm_ambient_light.mp3",
+          "voice_file": "C:\\Users\\Admin\\Desktop\\TienAmCac\\backend\\assets\\output\\16ef190a-00e9-4d35-82af-423a9b4d604b\\chapter_000\\seg_0001.wav",
+          "voice_profile": {
+            "voice": "vi-VN-NamMinhNeural",
+            "rate": "+0%",
+            "pitch": "+0Hz"
+          },
+          "speaker_key": "tác giả",
+          "duration_sec": 1.675
+        },
+        {
+          "index": 2,
+          "text": "Dịch giả: AI thienloitruc.com",
+          "is_dialog": true,
+          "speaker": "Dịch giả",
+          "character_type": "male_young",
+          "scene_type": "dialog",
+          "emotion": "calm",
+          "emotion_intensity": 0.3,
+          "sfx_triggers": [],
+          "bgm_change": null,
+          "voice_file": "C:\\Users\\Admin\\Desktop\\TienAmCac\\backend\\assets\\output\\16ef190a-00e9-4d35-82af-423a9b4d604b\\chapter_000\\seg_0002.wav",
+          "voice_profile": {
+            "voice": "vi-VN-NamMinhNeural",
+            "rate": "+0%",
+            "pitch": "+0Hz"
+          },
+          "speaker_key": "dịch giả",
+          "duration_sec": 1.387
+        },
+        {
+          "index": 3,
+          "text": "Thể loại: Xuyên Không",
+          "is_dialog": true,
+          "speaker": "Thể loại",
+          "character_type": "male_young",
+          "scene_type": "dialog",
+          "emotion": "calm",
+          "emotion_intensity": 0.3,
+          "sfx_triggers": [],
+          "bgm_change": null,
+          "voice_file": "C:\\Users\\Admin\\Desktop\\TienAmCac\\backend\\assets\\output\\16ef190a-00e9-4d35-82af-423a9b4d604b\\chapter_000\\seg_0003.wav",
+          "voice_profile": {
+            "voice": "vi-VN-NamMinhNeural",
+            "rate": "+0%",
+            "pitch": "+0Hz"
+          },
+          "speaker_key": "thể loại",
+          "duration_sec": 1.131
+        },
+        {
+          "index": 4,
+          "text": "Nguồn: Tuấn Trần",
+          "is_dialog": true,
+          "speaker": "Nguồn",
+          "character_type": "male_young",
+          "scene_type": "dialog",
+          "emotion": "calm",
+          "emotion_intensity": 0.3,
+          "sfx_triggers": [],
+          "bgm_change": null,
+          "voice_file": "C:\\Users\\Admin\\Desktop\\TienAmCac\\backend\\assets\\output\\16ef190a-00e9-4d35-82af-423a9b4d604b\\chapter_000\\seg_0004.wav",
+          "voice_profile": {
+            "voice": "vi-VN-NamMinhNeural",
+            "rate": "+0%",
+            "pitch": "+0Hz"
+          },
+          "speaker_key": "nguồn",
+          "duration_sec": 0.917
+        },
+        {
+          "index": 5,
+          "text": "★—",
+          "is_dialog": false,
+          "speaker": null,
+          "character_type": "narrator",
+          "scene_type": "narration",
+          "emotion": "calm",
+          "emotion_intensity": 0.3,
+          "sfx_triggers": [],
+          "bgm_change": "bgm_ambient_light.mp3",
+          "voice_file": "C:\\Users\\Admin\\Desktop\\TienAmCac\\backend\\assets\\output\\16ef190a-00e9-4d35-82af-423a9b4d604b\\chapter_000\\seg_0005.wav",
+          "voice_profile": null,
+          "speaker_key": null,
+          "duration_sec": 0.693
+        },
+        {
+          "index": 6,
+          "text": "DTV-EBOOK",
+          "is_dialog": false,
+          "speaker": null,
+          "character_type": "narrator",
+          "scene_type": "narration",
+          "emotion": "calm",
+          "emotion_intensity": 0.3,
+          "sfx_triggers": [],
+          "bgm_change": null,
+          "voice_file": "C:\\Users\\Admin\\Desktop\\TienAmCac\\backend\\assets\\output\\16ef190a-00e9-4d35-82af-423a9b4d604b\\chapter_000\\seg_0006.wav",
+          "voice_profile": null,
+          "speaker_key": null,
+          "duration_sec": 1.259
+        },
+        {
+          "index": 7,
+          "text": "Giới Thiệu",
+          "is_dialog": false,
+          "speaker": null,
+          "character_type": "narrator",
+          "scene_type": "narration",
+          "emotion": "calm",
+          "emotion_intensity": 0.3,
+          "sfx_triggers": [],
+          "bgm_change": null,
+          "voice_file": "C:\\Users\\Admin\\Desktop\\TienAmCac\\backend\\assets\\output\\16ef190a-00e9-4d35-82af-423a9b4d604b\\chapter_000\\seg_0007.wav",
+          "voice_profile": null,
+          "speaker_key": null,
+          "duration_sec": 0.576
+        },
+        {
+          "index": 8,
+          "text": "Lục Hiên xuyên không, đạt được trường sinh. Trong giới tu tiên, tu luyện Khí cảnh thọ nguyên 120 năm, Trúc Cơ 300 năm, Kim Đan 500 năm, Nguyên Anh 1000 năm... Tu tiên chính là tranh mệnh, theo đuổi Trường Sinh đại đạo. Lục Hiên tốt nghiệp ngay từ khi xuất môn, nên không vội vã. Tài năng không xuất sắc, thì thời gian sẽ bù đắp. Ngươi luyện khí năm mươi năm đại thành, ta trăm năm cũng đại thành. Ngươi trúc cơ hai trăm năm đỉnh phong, ta năm trăm năm cũng đỉnh phong. Ngươi kim đan bốn trăm năm nhập đạo, ta ngàn năm cẩu đạo cũng vô địch. Hiện tại không thắng được ngươi, không có nghĩa là tương lai cũng không thắng được. Khi ngươi chết, ta có thể nhảy disco trên mộ của ngươi, ngươi có tin không? Nhiều năm sau, Tiên Đế hoành hành tiên giới mấy chục vạn năm chưa từng bại trận, tuổi già gặp Thiên Nhân Ngũ Suy, lúc này, một thanh niên trẻ tuổi cầm một con lừa nhỏ, gõ cửa phòng Tiên Đế, đặt thanh đao lên cổ Tiên Đế, hỏi thăm một cách thân thiện:",
+          "is_dialog": false,
+          "speaker": null,
+          "character_type": "narrator",
+          "scene_type": "cultivation",
+          "emotion": "reverent",
+          "emotion_intensity": 0.6,
+          "sfx_triggers": [
+            "sfx_sword_draw.wav",
+            "sfx_wind_spirit.wav"
+          ],
+          "bgm_change": "bgm_cultivation.mp3",
+          "voice_file": "C:\\Users\\Admin\\Desktop\\TienAmCac\\backend\\assets\\output\\16ef190a-00e9-4d35-82af-423a9b4d604b\\chapter_000\\seg_0008.wav",
+          "voice_profile": null,
+          "speaker_key": null,
+          "duration_sec": 51.006
+        },
+        {
+          "index": 9,
+          "text": "\"Tiên Đế đại nhân, ngài có nhớ ba mươi vạn năm trước ở trần gian, ngài đã mượn ta một viên Linh Thạch, hôm nay ta đến đòi nợ cả gốc lẫn lãi...\" Truyện có tốc độ ra chương nhanh, không phải tu tiên vô địch lưu, mà tu tiên từ từ, không có nữ chính (vì đối với tu tiên trường sinh, trăm năm như một thoáng, ngàn năm quá ngắn). Nhân vật chính không có thiên phú đặc biệt, chỉ có thọ mệnh vô tận (các công pháp cần tốn thọ mệnh thì không có tác dụng phụ với nhân vật chính). Con lừa của nhân vật chính cũng được hưởng trường sinh, nên chỉ có con lừa là bạn đồng hành lâu dài của nhân vật chính.",
+          "is_dialog": true,
+          "speaker": "Truyện",
+          "character_type": "immortal",
+          "scene_type": "dialog",
+          "emotion": "calm",
+          "emotion_intensity": 0.3,
+          "sfx_triggers": [],
+          "bgm_change": "bgm_ambient_light.mp3",
+          "voice_file": "C:\\Users\\Admin\\Desktop\\TienAmCac\\backend\\assets\\output\\16ef190a-00e9-4d35-82af-423a9b4d604b\\chapter_000\\seg_0009.wav",
+          "voice_profile": {
+            "voice": "vi-VN-NamMinhNeural",
+            "rate": "-15%",
+            "pitch": "-4Hz"
+          },
+          "speaker_key": "truyện",
+          "duration_sec": 32.532
+        }
+      ],
+      "characters": [
+        {
+          "name": "Ngươi",
+          "character_type": "male_young",
+          "description": null,
+          "voice_config": null
+        },
+        {
+          "name": "được",
+          "character_type": "male_young",
+          "description": null,
+          "voice_config": null
+        },
+        {
+          "name": "Tiên Đế",
+          "character_type": "male_young",
+          "description": null,
+          "voice_config": null
+        },
+        {
+          "name": "đại",
+          "character_type": "male_young",
+          "description": null,
+          "voice_config": null
+        },
+        {
+          "name": "đỉnh",
+          "character_type": "male_young",
+          "description": null,
+          "voice_config": null
+        },
+        {
+          "name": "đạo",
+          "character_type": "male_young",
+          "description": null,
+          "voice_config": null
+        }
+      ]
+    }
+  ],
+  "output_path": "C:\\Users\\Admin\\Desktop\\TienAmCac\\backend\\assets\\output\\16ef190a-00e9-4d35-82af-423a9b4d604b\\Tu_Ti_n_Tr__ng_Sinh__C_u___o_Th_nh_Ti_n_-_Ng_u_N_i_FULL.mp3",
+  "error": null,
+  "created_at": "2026-05-03T13:55:34.331014",
+  "updated_at": "2026-05-03T13:55:34.331014",
+  "meta": {
+    "narrator_gender": "female"
+  },
+  "progress": {
+    "parsing": 100,
+    "analyzing": 100,
+    "voice": 100,
+    "fx": 100,
+    "mixing": 100
+  }
+}

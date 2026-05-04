@@ -11,6 +11,12 @@ set "ROOT=%~dp0"
 set "VENV=%ROOT%backend\.venv-win"
 set "PYTHON=%VENV%\Scripts\python.exe"
 set "PORT=8000"
+set "TOOLS=%ROOT%.tools"
+set "OLLAMA_MODELS=%TOOLS%\ollama-models"
+set "PYTHONIOENCODING=utf-8"
+set "PYTHONUTF8=1"
+set "PYTHONPATH=%ROOT%;%PYTHONPATH%"
+set "PATH=%TOOLS%\ffmpeg\bin;%TOOLS%\node;%PATH%"
 
 if not exist "%PYTHON%" (
     echo [ERROR] Python venv not found at:

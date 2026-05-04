@@ -67,7 +67,7 @@ class SceneAnalyzer:
     def __init__(self):
         self.ollama_url = f"{settings.OLLAMA_BASE_URL}/api/generate"
         self.model = settings.OLLAMA_MODEL
-        self.client = httpx.Client(timeout=5.0)
+        self.client = httpx.Client(timeout=60.0)
         self.ollama_available = True
         self.known_speakers: Dict[str, Dict[str, str]] = {}
         self.protagonist_name: Optional[str] = None

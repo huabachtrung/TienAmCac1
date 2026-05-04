@@ -1,0 +1,25 @@
+{
+  "id": "1d9ceb79-d940-44a2-bac8-832fa18fb13c",
+  "status": "failed",
+  "filename": "podcast_video",
+  "file_path": "Giai đoạn 3: Nâng cấp Video Edit Engine (CapCut Style) Đây là nơi OpenShot phát huy tối đa sức mạnh:  Track 1 (Video gốc): Cắt ghép theo edit_plan. Track 2 (B-Roll/Hình ảnh): Overlay các hình ảnh minh họa. Track 3 (Effects/Icons): Thêm các icon/reaction với animation pop-up (chỉnh keyframe Scale X/Y từ 0 lên 1). Track 4 (Subtitles): Mặc dù OpenShot có thể render SVG text, ta có thể kết hợp render Text image và thả vào timeline để có sub động (Karaoke style). Track 5 & 6 (Audio): Mix BGM và SFX với volume keyframe (nhạc nền nhỏ đi khi có tiếng nói).",
+  "media_kind": "video",
+  "total_chapters": 0,
+  "processed_chapters": 0,
+  "chapters": [],
+  "output_path": null,
+  "error": "PROCESSING",
+  "created_at": "2026-05-03T12:55:22.224416",
+  "updated_at": "2026-05-03T12:55:22.224416",
+  "meta": {
+    "video_task": "podcast",
+    "source_url": "Giai đoạn 3: Nâng cấp Video Edit Engine (CapCut Style) Đây là nơi OpenShot phát huy tối đa sức mạnh:  Track 1 (Video gốc): Cắt ghép theo edit_plan. Track 2 (B-Roll/Hình ảnh): Overlay các hình ảnh minh họa. Track 3 (Effects/Icons): Thêm các icon/reaction với animation pop-up (chỉnh keyframe Scale X/Y từ 0 lên 1). Track 4 (Subtitles): Mặc dù OpenShot có thể render SVG text, ta có thể kết hợp render Text image và thả vào timeline để có sub động (Karaoke style). Track 5 & 6 (Audio): Mix BGM và SFX với volume keyframe (nhạc nền nhỏ đi khi có tiếng nói)."
+  },
+  "progress": {
+    "parsing": 0,
+    "analyzing": 0,
+    "voice": 0,
+    "fx": 0,
+    "mixing": 0
+  }
+}

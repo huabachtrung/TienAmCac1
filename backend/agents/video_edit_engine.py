@@ -10,7 +10,10 @@ from __future__ import annotations
 import json
 import math
 import re
+import shlex
+import shutil
 import subprocess
+from html import escape
 from pathlib import Path
 from typing import Dict, List, Optional
 
@@ -45,6 +48,7 @@ class VideoEditEngine:
         self.ollama_url = f"{settings.OLLAMA_BASE_URL}/api/generate"
         self.ollama_model = settings.OLLAMA_MODEL
         self.renderer_dir = Path(__file__).resolve().parents[1] / "video_renderer"
+        self.last_render_metadata: Dict[str, object] = {}
 
     def prepare_source(
         self, job_id: str, source_url: Optional[str], local_file_path: Optional[str]
@@ -53,6 +57,18 @@ class VideoEditEngine:
 
     def probe_video(self, source_path: Path) -> Dict[str, float]:
         return self.review_engine.probe_video(source_path)
+
+    def _check_ollama(self) -> bool:
+        """Quick health check for Ollama — returns False if unreachable."""
+        try:
+            import httpx as _httpx
+            r = _httpx.get(
+                f"{settings.OLLAMA_BASE_URL}/api/tags",
+                timeout=float(settings.OLLAMA_TIMEOUT),
+            )
+            return r.status_code == 200
+        except Exception:
+            return False
 
     def transcribe(self, source_path: Path) -> Dict[str, object]:
         try:
@@ -173,6 +189,11 @@ class VideoEditEngine:
         if not transcript.strip():
             return fallback
 
+        # Quick check if Ollama is reachable before expensive call
+        if not self._check_ollama():
+            logger.warning("[VideoEdit] Ollama not reachable. Using fallback edit plan.")
+            return fallback
+
         prompt = self._edit_plan_prompt(
             transcript=transcript,
             transcript_segments=transcript_segments,
@@ -190,6 +211,7 @@ class VideoEditEngine:
                     "stream": False,
                     "options": {"temperature": 0.25, "num_predict": 1400},
                 },
+                timeout=120.0,
             )
             response.raise_for_status()
             raw = response.json().get("response", "")
@@ -219,16 +241,35 @@ class VideoEditEngine:
         output_dir.mkdir(parents=True, exist_ok=True)
         output_path = output_dir / "edited_output.mp4"
         edit_plan = json.loads(edit_plan_path.read_text(encoding="utf-8"))
+        renderer_mode = settings.VIDEO_EDIT_RENDERER.lower().strip()
 
-        renderer = self._render_with_remotion(
-            job_id=job_id,
-            source_path=source_path,
-            edit_plan_path=edit_plan_path,
-            output_path=output_path,
-            edit_plan=edit_plan,
-        )
-        if renderer:
-            return output_path, renderer
+        if renderer_mode not in {"auto", "hyperframes", "ffmpeg", "remotion"}:
+            renderer_mode = "auto"
+
+        if renderer_mode in {"auto", "hyperframes"}:
+            renderer = self._render_with_hyperframes(
+                job_id=job_id,
+                source_path=source_path,
+                output_path=output_path,
+                edit_plan=edit_plan,
+            )
+            if renderer:
+                return output_path, renderer
+            if renderer_mode == "hyperframes":
+                raise RuntimeError("HyperFrames renderer failed and VIDEO_EDIT_RENDERER=hyperframes")
+
+        if renderer_mode in {"auto", "remotion"}:
+            renderer = self._render_with_remotion(
+                job_id=job_id,
+                source_path=source_path,
+                edit_plan_path=edit_plan_path,
+                output_path=output_path,
+                edit_plan=edit_plan,
+            )
+            if renderer:
+                return output_path, renderer
+            if renderer_mode == "remotion":
+                raise RuntimeError("Remotion renderer failed and VIDEO_EDIT_RENDERER=remotion")
 
         fallback_path = self._render_with_ffmpeg(
             job_id=job_id,
@@ -238,6 +279,214 @@ class VideoEditEngine:
             output_path=output_path,
         )
         return fallback_path, "ffmpeg_fallback"
+
+    def _render_with_hyperframes(
+        self,
+        *,
+        job_id: str,
+        source_path: Path,
+        output_path: Path,
+        edit_plan: Dict[str, object],
+    ) -> Optional[str]:
+        command = shlex.split(settings.HYPERFRAMES_COMMAND)
+        executable = command[0] if command else ""
+        resolved = self._resolve_command(executable)
+        if not executable or not resolved:
+            logger.warning(f"[VideoEdit] HyperFrames command unavailable: {settings.HYPERFRAMES_COMMAND}")
+            return None
+        command[0] = resolved
+
+        project_dir = settings.VIDEO_TEMP_DIR / job_id / "hyperframes"
+        media_dir = project_dir / "media"
+        media_dir.mkdir(parents=True, exist_ok=True)
+        source_copy = media_dir / f"source{source_path.suffix.lower() or '.mp4'}"
+        shutil.copy2(source_path, source_copy)
+        audio_mix = self._create_audio_post_mix(job_id, source_path, edit_plan)
+        audio_copy = media_dir / "audio_mix.wav"
+        shutil.copy2(audio_mix, audio_copy)
+
+        self._write_hyperframes_project(project_dir, source_copy, audio_copy, edit_plan)
+        output_path.parent.mkdir(parents=True, exist_ok=True)
+
+        metadata: Dict[str, object] = {
+            "hyperframes_project_path": str(project_dir),
+            "hyperframes_command": settings.HYPERFRAMES_COMMAND,
+            "hyperframes_quality": settings.HYPERFRAMES_QUALITY,
+        }
+        try:
+            lint = self._run_process([*command, "lint"], cwd=project_dir, timeout=120)
+            metadata["hyperframes_lint"] = lint["stderr"] or lint["stdout"]
+            if lint["returncode"] != 0:
+                raise RuntimeError(f"HyperFrames lint failed: {metadata['hyperframes_lint'][:1000]}")
+
+            inspect = self._run_process([*command, "inspect", "--json"], cwd=project_dir, timeout=240)
+            metadata["hyperframes_inspect"] = inspect["stderr"] or inspect["stdout"]
+            if inspect["returncode"] != 0:
+                raise RuntimeError(f"HyperFrames inspect failed: {metadata['hyperframes_inspect'][:1000]}")
+
+            render = self._run_process(
+                [
+                    *command,
+                    "render",
+                    "--output",
+                    str(output_path),
+                    "--quality",
+                    settings.HYPERFRAMES_QUALITY,
+                ],
+                cwd=project_dir,
+                timeout=2400,
+            )
+            metadata["hyperframes_render"] = render["stderr"] or render["stdout"]
+            if render["returncode"] != 0:
+                raise RuntimeError(f"HyperFrames render failed: {metadata['hyperframes_render'][:1000]}")
+            if not output_path.exists() or output_path.stat().st_size < 1024:
+                raise FileNotFoundError("HyperFrames did not create a valid output video")
+            self.last_render_metadata = metadata
+            return "hyperframes"
+        except Exception as exc:
+            self.last_render_metadata = {**metadata, "hyperframes_error": str(exc)}
+            logger.warning(f"[VideoEdit] HyperFrames renderer failed: {exc}")
+            return None
+
+    def _write_hyperframes_project(
+        self,
+        project_dir: Path,
+        source_copy: Path,
+        audio_copy: Path,
+        edit_plan: Dict[str, object],
+    ) -> None:
+        duration = float(edit_plan.get("duration_sec") or 1.0)
+        vertical = str(edit_plan.get("orientation", "vertical")) != "horizontal"
+        width, height = (1080, 1920) if vertical else (1920, 1080)
+        project_dir.mkdir(parents=True, exist_ok=True)
+        (project_dir / "DESIGN.md").write_text(
+            "\n".join(
+                [
+                    "## Style Prompt",
+                    "Clean creator-video edit with high contrast captions, restrained dark overlays, and fast readable emphasis.",
+                    "## Colors",
+                    "#05070A background, #FFFFFF primary text, #FACC15 emphasis, #38BDF8 accent, #111827 outline.",
+                    "## Typography",
+                    "Arial or system sans-serif, bold caption typography.",
+                    "## What NOT to Do",
+                    "Do not obscure the source subject. Do not use decorative gradients. Do not allow captions to leave frame.",
+                ]
+            ),
+            encoding="utf-8",
+        )
+
+        video_rel = source_copy.relative_to(project_dir).as_posix()
+        audio_rel = audio_copy.relative_to(project_dir).as_posix()
+        caption_nodes = self._hyperframes_caption_nodes(edit_plan)
+        popup_nodes = self._hyperframes_popup_nodes(edit_plan)
+        html = f"""<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Tien Am Cac Edit</title>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.14.2/dist/gsap.min.js"></script>
+</head>
+<body>
+  <div data-composition-id="tienamcac-edit" data-start="0" data-duration="{duration:.3f}" data-width="{width}" data-height="{height}">
+    <video id="source-video" data-start="0" data-duration="{duration:.3f}" data-track-index="0" src="{escape(video_rel)}" muted playsinline></video>
+    <audio id="audio-mix" data-start="0" data-duration="{duration:.3f}" data-track-index="1" src="{escape(audio_rel)}" data-volume="1"></audio>
+    <div class="shade" data-layout-ignore></div>
+{caption_nodes}
+{popup_nodes}
+    <style>
+      html, body {{ margin: 0; background: #05070A; }}
+      [data-composition-id="tienamcac-edit"] {{
+        position: relative;
+        overflow: hidden;
+        background: #05070A;
+        font-family: Arial, sans-serif;
+      }}
+      #source-video {{
+        position: absolute;
+        inset: 0;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        filter: contrast(1.06) saturate(1.08);
+      }}
+      .shade {{
+        position: absolute;
+        inset: 0;
+        background: linear-gradient(180deg, rgba(0,0,0,.20), transparent 28%, transparent 66%, rgba(0,0,0,.44));
+        z-index: 2;
+      }}
+      .caption {{
+        position: absolute;
+        left: 7%;
+        right: 7%;
+        bottom: 8%;
+        z-index: 5;
+        text-align: center;
+        font-size: {58 if vertical else 46}px;
+        line-height: 1.1;
+        font-weight: 900;
+        color: #FFFFFF;
+        text-shadow: 0 5px 0 #000, 0 0 22px rgba(0,0,0,.65);
+        -webkit-text-stroke: 3px #111827;
+      }}
+      .popup {{
+        position: absolute;
+        left: 50%;
+        top: 24%;
+        z-index: 6;
+        transform: translate(-50%, -50%);
+        padding: 14px 24px;
+        background: rgba(2, 6, 23, .78);
+        border: 3px solid #FACC15;
+        color: #FACC15;
+        font-size: {66 if vertical else 54}px;
+        font-weight: 900;
+        text-align: center;
+        text-shadow: 0 4px 0 #000;
+        max-width: 86%;
+      }}
+    </style>
+    <script>
+      window.__timelines = window.__timelines || {{}};
+      const tl = gsap.timeline({{ paused: true }});
+      tl.from(".caption", {{ y: 34, opacity: 0, duration: 0.18, stagger: 0.02, ease: "power2.out" }}, 0);
+      tl.from(".popup", {{ scale: 0.86, opacity: 0, duration: 0.16, stagger: 0.02, ease: "back.out(1.8)" }}, 0);
+      window.__timelines["tienamcac-edit"] = tl;
+    </script>
+  </div>
+</body>
+</html>
+"""
+        (project_dir / "index.html").write_text(html, encoding="utf-8")
+
+    def _hyperframes_caption_nodes(self, edit_plan: Dict[str, object]) -> str:
+        nodes = []
+        for idx, cue in enumerate(edit_plan.get("captions", [])[:400], start=1):
+            start = max(0.0, float(cue.get("start", 0)))
+            end = max(start + 0.2, float(cue.get("end", start + 1.0)))
+            text = escape(str(cue.get("text", "")).strip()[:140])
+            if not text:
+                continue
+            nodes.append(
+                f'    <div id="caption-{idx}" class="caption" data-start="{start:.3f}" '
+                f'data-duration="{end - start:.3f}" data-track-index="{idx + 10}">{text}</div>'
+            )
+        return "\n".join(nodes)
+
+    def _hyperframes_popup_nodes(self, edit_plan: Dict[str, object]) -> str:
+        nodes = []
+        for idx, cue in enumerate(edit_plan.get("text_popups", [])[:80], start=1):
+            start = max(0.0, float(cue.get("start", 0)))
+            end = max(start + 0.2, float(cue.get("end", start + 1.0)))
+            text = escape(str(cue.get("text", "")).strip()[:42])
+            if not text:
+                continue
+            nodes.append(
+                f'    <div id="popup-{idx}" class="popup" data-start="{start:.3f}" '
+                f'data-duration="{end - start:.3f}" data-track-index="{idx + 500}">{text}</div>'
+            )
+        return "\n".join(nodes)
 
     def _render_with_remotion(
         self,
@@ -573,13 +822,23 @@ class VideoEditEngine:
         style: str,
     ) -> Dict[str, object]:
         duration = float(source_meta.get("duration_sec") or fallback.get("duration_sec") or 1.0)
-        clean = {**fallback, **plan}
+        # Merge: only use Ollama values when they're non-empty lists/dicts
+        clean = dict(fallback)
+        for key, value in plan.items():
+            if isinstance(value, list) and len(value) == 0:
+                continue  # Don't overwrite fallback with empty lists
+            if isinstance(value, dict) and not value:
+                continue
+            clean[key] = value
         clean["schema_version"] = 1
         clean["style"] = style
         clean["orientation"] = orientation.value
         clean["duration_sec"] = round(duration, 2)
         for key in ("captions", "text_popups", "icons"):
             clean[key] = self._clamp_timed_cues(clean.get(key, []), duration)
+        # Ensure captions always exist — use fallback if still empty
+        if not clean.get("captions") and fallback.get("captions"):
+            clean["captions"] = self._clamp_timed_cues(fallback["captions"], duration)
         audio = clean.get("audio") if isinstance(clean.get("audio"), dict) else {}
         audio["bgm"] = audio.get("bgm") or "bgm_ambient_light.mp3"
         audio["sfx"] = self._clamp_sfx(audio.get("sfx", []), duration)
@@ -754,3 +1013,38 @@ Transcript:
         if check and result.returncode != 0:
             raise RuntimeError(result.stderr.strip() or "ffmpeg command failed")
         return result
+
+    def _run_process(self, cmd: List[str], cwd: Path, timeout: int) -> Dict[str, object]:
+        if cmd:
+            resolved = self._resolve_command(cmd[0])
+            if resolved:
+                cmd = [resolved, *cmd[1:]]
+        result = subprocess.run(
+            cmd,
+            cwd=str(cwd),
+            capture_output=True,
+            text=True,
+            encoding="utf-8",
+            errors="replace",
+            timeout=timeout,
+        )
+        return {
+            "returncode": result.returncode,
+            "stdout": result.stdout,
+            "stderr": result.stderr,
+        }
+
+    def _resolve_command(self, executable: str) -> Optional[str]:
+        if not executable:
+            return None
+        if Path(executable).exists():
+            return executable
+        if shutil.which(executable):
+            if executable.lower() not in {"node", "npm", "npx"}:
+                return shutil.which(executable)
+        if executable.lower() in {"node", "npm", "npx"}:
+            for suffix in (".cmd", ".exe", ".bat"):
+                found = shutil.which(executable + suffix)
+                if found:
+                    return found
+        return shutil.which(executable)

@@ -4,8 +4,19 @@ Tests all components: config, models, connections, voice engine, API
 """
 import sys, os, time, json, traceback
 
+if __name__ != "__main__":
+    import pytest
+
+    pytest.skip("full_system_test is a standalone diagnostic script", allow_module_level=True)
+
 os.environ["PYTHONPATH"] = r"c:\Users\Admin\Desktop\TienAmCac"
+os.environ.setdefault("PYTHONIOENCODING", "utf-8")
+os.environ.setdefault("PYTHONUTF8", "1")
 sys.path.insert(0, r"c:\Users\Admin\Desktop\TienAmCac")
+if hasattr(sys.stdout, "reconfigure"):
+    sys.stdout.reconfigure(encoding="utf-8", errors="replace")
+if hasattr(sys.stderr, "reconfigure"):
+    sys.stderr.reconfigure(encoding="utf-8", errors="replace")
 
 PASS = "[OK]"
 FAIL = "[FAIL]"

@@ -33,6 +33,7 @@
                     <button id="modeAudio" class="mode-btn active" type="button">Audiobook</button>
                     <button id="modeVideo" class="mode-btn" type="button">Video Review</button>
                     <button id="modeEdit" class="mode-btn" type="button">Video Edit</button>
+                    <button id="modePodcast" class="mode-btn" type="button">Podcast</button>
                 </div>
 
                 <div id="audioForm" class="mode-panel">
@@ -181,6 +182,28 @@
                     <button id="btnStartEdit" class="btn btn-glow w-full mt-6" type="button">
                         <i data-lucide="sparkles"></i>
                         Tao video edit
+                    </button>
+                </div>
+
+                <div id="podcastForm" class="mode-panel hidden">
+                    <h2>Tạo video Podcast từ bài báo</h2>
+                    <p class="panel-desc">Dán link bài báo bất kỳ. Hệ thống sẽ tự động cào nội dung, viết kịch bản bằng AI, tạo hình ảnh minh họa, lồng tiếng Việt với subtitle karaoke và render video dọc chuyên nghiệp.</p>
+
+                    <div class="field-stack">
+                        <label>
+                            <span>Link bài báo</span>
+                            <input type="url" id="podcastUrl" class="input-modern" placeholder="https://vnexpress.net/... hoặc link bài báo bất kỳ">
+                        </label>
+                    </div>
+
+                    <p class="narrator-hint" style="margin-top:8px;">
+                        <i data-lucide="info" style="width:13px;height:13px;vertical-align:middle;"></i>
+                        Video output 1080×1920 (9:16) với hiệu ứng CapCut: chữ karaoke nảy, icon pop-up, ảnh zoom, BGM tự động. Hoàn toàn FREE.
+                    </p>
+
+                    <button id="btnStartPodcast" class="btn btn-glow w-full mt-6" type="button">
+                        <i data-lucide="podcast"></i>
+                        Tạo video Podcast
                     </button>
                 </div>
             </section>

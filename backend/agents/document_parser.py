@@ -103,6 +103,10 @@ class DocumentParser:
                         if chapter_idx >= end_idx:
                             return chapters
                     continue
+                else:
+                    # It had chapter headings but _split_into_chapters returned empty (e.g. TOC file)
+                    logger.info(f"[DocParser] Skipping TOC-like file: {title[:60]}")
+                    continue
 
             chapter_title = title if self._looks_like_chapter_title(title) else f"Chương {chapter_idx + 1}"
             if start_idx <= chapter_idx < end_idx:
@@ -137,10 +141,38 @@ class DocumentParser:
             logger.warning("[DocParser] No chapter headings found, treating as single chapter")
             return [Chapter(index=0, title="Toàn bộ tác phẩm", raw_text=self._trim_non_story_content(raw_text))]
 
-        chapters: List[Chapter] = []
-        for i, match in enumerate(splits):
-            start = match.start()
+        # Filter out Table of Contents (TOC) entries
+        is_short = []
+        for i in range(len(splits)):
             end = splits[i + 1].start() if i + 1 < len(splits) else len(raw_text)
+            is_short.append((end - splits[i].end()) < 300)
+
+        valid_splits = []
+        i = 0
+        while i < len(splits):
+            if is_short[i]:
+                j = i
+                while j < len(splits) and is_short[j]:
+                    j += 1
+                # If there are >= 2 short matches in a row, it's a TOC block.
+                # The match at `j` (if exists) is the last TOC entry containing the intro text.
+                if (j - i) >= 2:
+                    i = j + 1  # Skip the entire TOC block including the last entry
+                    continue
+                else:
+                    valid_splits.append(splits[i])
+                    i += 1
+            else:
+                valid_splits.append(splits[i])
+                i += 1
+
+        if not valid_splits:
+            return []
+
+        chapters: List[Chapter] = []
+        for i, match in enumerate(valid_splits):
+            start = match.start()
+            end = valid_splits[i + 1].start() if i + 1 < len(valid_splits) else len(raw_text)
             chunk = raw_text[start:end].strip()
             title_line = self._clean_text(match.group().strip())
             body = chunk[len(match.group().strip()):].strip()

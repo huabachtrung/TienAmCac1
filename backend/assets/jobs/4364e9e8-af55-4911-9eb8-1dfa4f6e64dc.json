@@ -1,0 +1,546 @@
+{
+  "id": "4364e9e8-af55-4911-9eb8-1dfa4f6e64dc",
+  "status": "done",
+  "filename": "Rick_Astley_-_Never_Gonna_Give_You_Up_Official_Vid [dQw4w9WgXcQ].mp4",
+  "file_path": "C:\\Users\\Admin\\Desktop\\TienAmCac\\backend\\assets\\uploads\\4364e9e8-af55-4911-9eb8-1dfa4f6e64dc\\Rick_Astley_-_Never_Gonna_Give_You_Up_Official_Vid [dQw4w9WgXcQ].mp4",
+  "media_kind": "video",
+  "total_chapters": 0,
+  "processed_chapters": 0,
+  "chapters": [],
+  "output_path": "C:\\Users\\Admin\\Desktop\\TienAmCac\\backend\\assets\\video_output\\4364e9e8-af55-4911-9eb8-1dfa4f6e64dc\\review_output.mp4",
+  "error": null,
+  "created_at": "2026-05-03T03:55:33.164695",
+  "updated_at": "2026-05-03T03:55:33.164695",
+  "meta": {
+    "orientation": "vertical",
+    "style": "review_short",
+    "max_duration_sec": 30,
+    "source_url": "https://www.youtube.com/watch?v=dQw4w9WgXcQ",
+    "source_path": "C:\\Users\\Admin\\Desktop\\TienAmCac\\backend\\assets\\uploads\\4364e9e8-af55-4911-9eb8-1dfa4f6e64dc\\Rick_Astley_-_Never_Gonna_Give_You_Up_Official_Vid [dQw4w9WgXcQ].mp4",
+    "source_meta": {
+      "duration_sec": 213.04,
+      "width": 640,
+      "height": 360,
+      "fps": 25.0,
+      "has_audio": true
+    },
+    "transcript_preview": "",
+    "transcript_language": "en",
+    "vision_model": "qwen2.5vl:3b",
+    "visual_analysis": {
+      "model": "qwen2.5vl:3b",
+      "keyframes": [
+        "C:\\Users\\Admin\\Desktop\\TienAmCac\\backend\\assets\\video_temp\\_keyframes\\Rick_Astley_-_Never_Gonna_Give_Y\\frame_01.jpg",
+        "C:\\Users\\Admin\\Desktop\\TienAmCac\\backend\\assets\\video_temp\\_keyframes\\Rick_Astley_-_Never_Gonna_Give_Y\\frame_02.jpg",
+        "C:\\Users\\Admin\\Desktop\\TienAmCac\\backend\\assets\\video_temp\\_keyframes\\Rick_Astley_-_Never_Gonna_Give_Y\\frame_03.jpg",
+        "C:\\Users\\Admin\\Desktop\\TienAmCac\\backend\\assets\\video_temp\\_keyframes\\Rick_Astley_-_Never_Gonna_Give_Y\\frame_04.jpg",
+        "C:\\Users\\Admin\\Desktop\\TienAmCac\\backend\\assets\\video_temp\\_keyframes\\Rick_Astley_-_Never_Gonna_Give_Y\\frame_05.jpg",
+        "C:\\Users\\Admin\\Desktop\\TienAmCac\\backend\\assets\\video_temp\\_keyframes\\Rick_Astley_-_Never_Gonna_Give_Y\\frame_06.jpg"
+      ],
+      "observations": {
+        "visual_summary": "",
+        "subjects": [],
+        "events": [],
+        "mood": "",
+        "hook_angle": ""
+      },
+      "script_outline": {
+        "hook": "",
+        "context": "",
+        "insight": "",
+        "closing": "Tóm lại, điểm đáng xem nằm ở cách các chi tiết hình ảnh và lời thoại cùng đẩy mạch nội dung.",
+        "transcript_hint": ""
+      }
+    },
+    "review_title": "Rick Astley - Never Gonna Give You Up Official Vid dQw4w9WgXcQ",
+    "review_script": "Chào các bạn! Hôm nay chúng ta cùng nhau review một video cực kỳ thú vị. Video này mang đến nội dung vô cùng thú vị và đáng xem. Mỗi khung hình đều được chăm chút kỹ lưỡng, thu hút người xem từ đầu đến cuối. Đây là nội dung không nên bỏ lỡ trong tuần này. Nếu thấy hay",
+    "selected_ranges": [
+      {
+        "start": 0.0,
+        "end": 6.0,
+        "label": "context"
+      },
+      {
+        "start": 6.0,
+        "end": 12.0,
+        "label": "context"
+      },
+      {
+        "start": 12.0,
+        "end": 18.0,
+        "label": "context"
+      },
+      {
+        "start": 18.0,
+        "end": 24.0,
+        "label": "context"
+      },
+      {
+        "start": 24.0,
+        "end": 30.0,
+        "label": "context"
+      }
+    ],
+    "subtitles_path": "C:\\Users\\Admin\\Desktop\\TienAmCac\\backend\\assets\\video_temp\\4364e9e8-af55-4911-9eb8-1dfa4f6e64dc\\review_subtitles.srt",
+    "audio_mix_path": "C:\\Users\\Admin\\Desktop\\TienAmCac\\backend\\assets\\video_temp\\4364e9e8-af55-4911-9eb8-1dfa4f6e64dc\\review_mix.wav",
+    "voice_provider": "local_f5",
+    "speech_cues": [
+      {
+        "index": 1,
+        "text": "Chào các bạn!",
+        "start": 0.0,
+        "end": 0.704,
+        "path": "C:\\Users\\Admin\\Desktop\\TienAmCac\\backend\\assets\\video_temp\\4364e9e8-af55-4911-9eb8-1dfa4f6e64dc\\review_voice_segments\\voice_001.wav"
+      },
+      {
+        "index": 2,
+        "text": "Hôm nay chúng ta cùng nhau review một video cực kỳ thú vị.",
+        "start": 0.864,
+        "end": 3.819,
+        "path": "C:\\Users\\Admin\\Desktop\\TienAmCac\\backend\\assets\\video_temp\\4364e9e8-af55-4911-9eb8-1dfa4f6e64dc\\review_voice_segments\\voice_002.wav"
+      },
+      {
+        "index": 3,
+        "text": "Video này mang đến nội dung vô cùng thú vị và đáng xem.",
+        "start": 3.979,
+        "end": 6.891,
+        "path": "C:\\Users\\Admin\\Desktop\\TienAmCac\\backend\\assets\\video_temp\\4364e9e8-af55-4911-9eb8-1dfa4f6e64dc\\review_voice_segments\\voice_003.wav"
+      },
+      {
+        "index": 4,
+        "text": "Mỗi khung hình đều được chăm chút kỹ lưỡng, thu hút người xem từ đầu đến cuối.",
+        "start": 7.051,
+        "end": 11.648,
+        "path": "C:\\Users\\Admin\\Desktop\\TienAmCac\\backend\\assets\\video_temp\\4364e9e8-af55-4911-9eb8-1dfa4f6e64dc\\review_voice_segments\\voice_004.wav"
+      },
+      {
+        "index": 5,
+        "text": "Đây là nội dung không nên bỏ lỡ trong tuần này.",
+        "start": 11.808,
+        "end": 14.379,
+        "path": "C:\\Users\\Admin\\Desktop\\TienAmCac\\backend\\assets\\video_temp\\4364e9e8-af55-4911-9eb8-1dfa4f6e64dc\\review_voice_segments\\voice_005.wav"
+      },
+      {
+        "index": 6,
+        "text": "Nếu thấy hay",
+        "start": 14.539,
+        "end": 15.2,
+        "path": "C:\\Users\\Admin\\Desktop\\TienAmCac\\backend\\assets\\video_temp\\4364e9e8-af55-4911-9eb8-1dfa4f6e64dc\\review_voice_segments\\voice_006.wav"
+      }
+    ],
+    "rendered_title": "Rick Astley - Never Gonna Give You Up Official Vid dQw4w9WgXcQ",
+    "crop_plan": [
+      {
+        "clip": "clip_000.mp4",
+        "start": 0.0,
+        "end": 6.0,
+        "mode": "opencv_face_track",
+        "x_offset": 103,
+        "source_width": 640,
+        "source_height": 360,
+        "crop_width": 202,
+        "detections": [
+          {
+            "time": 0.48,
+            "x": 375,
+            "y": 186,
+            "w": 148,
+            "h": 148,
+            "center": 449.0
+          },
+          {
+            "time": 2.4,
+            "x": 296,
+            "y": 108,
+            "w": 69,
+            "h": 69,
+            "center": 330.5
+          },
+          {
+            "time": 2.88,
+            "x": 276,
+            "y": 60,
+            "w": 64,
+            "h": 64,
+            "center": 308.0
+          },
+          {
+            "time": 3.36,
+            "x": 98,
+            "y": 284,
+            "w": 72,
+            "h": 72,
+            "center": 134.0
+          },
+          {
+            "time": 3.84,
+            "x": 157,
+            "y": 264,
+            "w": 72,
+            "h": 72,
+            "center": 193.0
+          },
+          {
+            "time": 4.32,
+            "x": 147,
+            "y": 175,
+            "w": 133,
+            "h": 133,
+            "center": 213.5
+          },
+          {
+            "time": 4.8,
+            "x": 86,
+            "y": 200,
+            "w": 62,
+            "h": 62,
+            "center": 117.0
+          },
+          {
+            "time": 5.28,
+            "x": 191,
+            "y": 214,
+            "w": 67,
+            "h": 67,
+            "center": 224.5
+          },
+          {
+            "time": 5.76,
+            "x": 69,
+            "y": 55,
+            "w": 141,
+            "h": 141,
+            "center": 139.5
+          }
+        ]
+      },
+      {
+        "clip": "clip_001.mp4",
+        "start": 6.0,
+        "end": 12.0,
+        "mode": "opencv_face_track",
+        "x_offset": 160,
+        "source_width": 640,
+        "source_height": 360,
+        "crop_width": 202,
+        "detections": [
+          {
+            "time": 6.0,
+            "x": 69,
+            "y": 54,
+            "w": 141,
+            "h": 141,
+            "center": 139.5
+          },
+          {
+            "time": 6.96,
+            "x": 69,
+            "y": 56,
+            "w": 141,
+            "h": 141,
+            "center": 139.5
+          },
+          {
+            "time": 7.44,
+            "x": 180,
+            "y": 76,
+            "w": 152,
+            "h": 152,
+            "center": 256.0
+          },
+          {
+            "time": 8.88,
+            "x": 325,
+            "y": 301,
+            "w": 56,
+            "h": 56,
+            "center": 353.0
+          },
+          {
+            "time": 9.36,
+            "x": 278,
+            "y": 97,
+            "w": 56,
+            "h": 56,
+            "center": 306.0
+          },
+          {
+            "time": 9.84,
+            "x": 353,
+            "y": 156,
+            "w": 178,
+            "h": 178,
+            "center": 442.0
+          },
+          {
+            "time": 10.32,
+            "x": 287,
+            "y": 22,
+            "w": 116,
+            "h": 116,
+            "center": 345.0
+          },
+          {
+            "time": 10.8,
+            "x": 210,
+            "y": 240,
+            "w": 112,
+            "h": 112,
+            "center": 266.0
+          }
+        ]
+      },
+      {
+        "clip": "clip_002.mp4",
+        "start": 12.0,
+        "end": 18.0,
+        "mode": "opencv_face_track",
+        "x_offset": 252,
+        "source_width": 640,
+        "source_height": 360,
+        "crop_width": 202,
+        "detections": [
+          {
+            "time": 12.96,
+            "x": 330,
+            "y": 5,
+            "w": 157,
+            "h": 157,
+            "center": 408.5
+          },
+          {
+            "time": 13.92,
+            "x": 318,
+            "y": 66,
+            "w": 72,
+            "h": 72,
+            "center": 354.0
+          },
+          {
+            "time": 14.4,
+            "x": 315,
+            "y": 127,
+            "w": 63,
+            "h": 63,
+            "center": 346.5
+          }
+        ]
+      },
+      {
+        "clip": "clip_003.mp4",
+        "start": 18.0,
+        "end": 24.0,
+        "mode": "opencv_face_track",
+        "x_offset": 186,
+        "source_width": 640,
+        "source_height": 360,
+        "crop_width": 202,
+        "detections": [
+          {
+            "time": 18.48,
+            "x": 248,
+            "y": 97,
+            "w": 59,
+            "h": 59,
+            "center": 277.5
+          },
+          {
+            "time": 18.96,
+            "x": 383,
+            "y": 61,
+            "w": 154,
+            "h": 154,
+            "center": 460.0
+          },
+          {
+            "time": 19.44,
+            "x": 186,
+            "y": 227,
+            "w": 82,
+            "h": 82,
+            "center": 227.0
+          },
+          {
+            "time": 19.92,
+            "x": 241,
+            "y": 116,
+            "w": 74,
+            "h": 74,
+            "center": 278.0
+          },
+          {
+            "time": 20.4,
+            "x": 251,
+            "y": 52,
+            "w": 89,
+            "h": 89,
+            "center": 295.5
+          },
+          {
+            "time": 20.88,
+            "x": 348,
+            "y": 191,
+            "w": 148,
+            "h": 148,
+            "center": 422.0
+          },
+          {
+            "time": 21.36,
+            "x": 301,
+            "y": 29,
+            "w": 90,
+            "h": 90,
+            "center": 346.0
+          },
+          {
+            "time": 21.84,
+            "x": 244,
+            "y": 86,
+            "w": 107,
+            "h": 107,
+            "center": 297.5
+          },
+          {
+            "time": 22.32,
+            "x": 210,
+            "y": 47,
+            "w": 111,
+            "h": 111,
+            "center": 265.5
+          },
+          {
+            "time": 22.8,
+            "x": 221,
+            "y": 76,
+            "w": 118,
+            "h": 118,
+            "center": 280.0
+          },
+          {
+            "time": 23.28,
+            "x": 241,
+            "y": 122,
+            "w": 56,
+            "h": 56,
+            "center": 269.0
+          }
+        ]
+      },
+      {
+        "clip": "clip_004.mp4",
+        "start": 24.0,
+        "end": 30.0,
+        "mode": "opencv_face_track",
+        "x_offset": 199,
+        "source_width": 640,
+        "source_height": 360,
+        "crop_width": 202,
+        "detections": [
+          {
+            "time": 24.48,
+            "x": 223,
+            "y": 54,
+            "w": 245,
+            "h": 245,
+            "center": 345.5
+          },
+          {
+            "time": 24.96,
+            "x": 199,
+            "y": 15,
+            "w": 221,
+            "h": 221,
+            "center": 309.5
+          },
+          {
+            "time": 25.44,
+            "x": 119,
+            "y": 39,
+            "w": 266,
+            "h": 266,
+            "center": 252.0
+          },
+          {
+            "time": 25.92,
+            "x": 149,
+            "y": 55,
+            "w": 236,
+            "h": 236,
+            "center": 267.0
+          },
+          {
+            "time": 26.4,
+            "x": 200,
+            "y": 24,
+            "w": 222,
+            "h": 222,
+            "center": 311.0
+          },
+          {
+            "time": 26.88,
+            "x": 186,
+            "y": 78,
+            "w": 134,
+            "h": 134,
+            "center": 253.0
+          },
+          {
+            "time": 27.36,
+            "x": 242,
+            "y": 71,
+            "w": 122,
+            "h": 122,
+            "center": 303.0
+          },
+          {
+            "time": 27.84,
+            "x": 335,
+            "y": 44,
+            "w": 85,
+            "h": 85,
+            "center": 377.5
+          },
+          {
+            "time": 28.32,
+            "x": 271,
+            "y": 88,
+            "w": 72,
+            "h": 72,
+            "center": 307.0
+          },
+          {
+            "time": 28.8,
+            "x": 292,
+            "y": 51,
+            "w": 73,
+            "h": 73,
+            "center": 328.5
+          },
+          {
+            "time": 29.28,
+            "x": 264,
+            "y": 23,
+            "w": 251,
+            "h": 251,
+            "center": 389.5
+          },
+          {
+            "time": 29.76,
+            "x": 256,
+            "y": 51,
+            "w": 217,
+            "h": 217,
+            "center": 364.5
+          }
+        ]
+      }
+    ]
+  },
+  "progress": {
+    "parsing": 100,
+    "analyzing": 100,
+    "voice": 100,
+    "fx": 0,
+    "mixing": 100
+  }
+}

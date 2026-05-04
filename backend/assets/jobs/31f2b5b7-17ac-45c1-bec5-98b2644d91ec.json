@@ -1,0 +1,26 @@
+{
+  "id": "31f2b5b7-17ac-45c1-bec5-98b2644d91ec",
+  "status": "analyzing",
+  "filename": "podcast_video",
+  "file_path": "https://vnexpress.net/iran-canh-bao-eo-bien-hormuz-se-la-mo-chon-tau-san-bay-my-5069370.html",
+  "media_kind": "video",
+  "total_chapters": 0,
+  "processed_chapters": 0,
+  "chapters": [],
+  "output_path": null,
+  "error": null,
+  "created_at": "2026-05-03T13:24:20.155420",
+  "updated_at": "2026-05-03T13:24:20.155420",
+  "meta": {
+    "video_task": "podcast",
+    "source_url": "https://vnexpress.net/iran-canh-bao-eo-bien-hormuz-se-la-mo-chon-tau-san-bay-my-5069370.html"
+  },
+  "progress": {
+    "parsing": 0,
+    "analyzing": 0,
+    "voice": 0,
+    "fx": 0,
+    "mixing": 0,
+    "podcast": 10
+  }
+}

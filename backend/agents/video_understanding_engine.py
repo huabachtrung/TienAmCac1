@@ -29,20 +29,41 @@ class VideoUnderstandingEngine:
         self.ffmpeg_bin = get_ffmpeg_binary() or "ffmpeg"
         self.ollama_url = f"{settings.OLLAMA_BASE_URL}/api/generate"
         self.model = settings.VIDEO_VISION_MODEL
-        self.http = httpx.Client(timeout=90.0)
+        self.http = httpx.Client(timeout=120.0)
+
+    # ── Public API ───────────────────────────────────────────────────────
 
     def analyze(self, source_path: Path, meta: Dict[str, float], transcript: str) -> Dict[str, object]:
+        """Analyze video keyframes with VLM.  Returns empty analysis if VLM unavailable."""
         frame_paths = self.extract_keyframes(source_path, float(meta.get("duration_sec") or 0.0))
         if not frame_paths:
-            raise VideoUnderstandingError("Could not extract keyframes for visual understanding.")
-        observations = self._analyze_frames(frame_paths, transcript)
-        script_outline = self._build_script_outline(observations, transcript)
-        return {
-            "model": self.model,
-            "keyframes": [str(path) for path in frame_paths],
-            "observations": observations,
-            "script_outline": script_outline,
-        }
+            logger.warning("[VideoUnderstanding] No keyframes extracted — using transcript-only analysis")
+            return self._transcript_only_analysis(transcript, source_path.stem)
+
+        # Pre-check Ollama connectivity before expensive VLM call
+        if not self._check_ollama_available():
+            logger.warning("[VideoUnderstanding] Ollama not reachable — using transcript-only analysis")
+            return self._transcript_only_analysis(transcript, source_path.stem)
+
+        try:
+            observations = self._analyze_frames(frame_paths, transcript)
+            script_outline = self._build_script_outline(observations, transcript)
+            return {
+                "model": self.model,
+                "keyframes": [str(path) for path in frame_paths],
+                "observations": observations,
+                "script_outline": script_outline,
+            }
+        except VideoUnderstandingError:
+            if settings.VIDEO_VISION_REQUIRED:
+                raise
+            logger.warning("[VideoUnderstanding] VLM analysis failed — falling back to transcript-only")
+            return self._transcript_only_analysis(transcript, source_path.stem)
+        except Exception as exc:
+            if settings.VIDEO_VISION_REQUIRED:
+                raise VideoUnderstandingError(str(exc)) from exc
+            logger.warning(f"[VideoUnderstanding] VLM analysis error: {exc} — falling back")
+            return self._transcript_only_analysis(transcript, source_path.stem)
 
     def extract_keyframes(self, source_path: Path, duration_sec: float) -> List[Path]:
         temp_dir = settings.VIDEO_TEMP_DIR / "_keyframes" / source_path.stem[:32]
@@ -74,6 +95,19 @@ class VideoUnderstandingEngine:
             if result.returncode == 0 and frame.exists() and frame.stat().st_size > 1024:
                 frames.append(frame)
         return frames
+
+    # ── Private helpers ──────────────────────────────────────────────────
+
+    def _check_ollama_available(self) -> bool:
+        """Quick health check for Ollama — returns False if unreachable."""
+        try:
+            r = httpx.get(
+                f"{settings.OLLAMA_BASE_URL}/api/tags",
+                timeout=float(settings.OLLAMA_TIMEOUT),
+            )
+            return r.status_code == 200
+        except Exception:
+            return False
 
     def _analyze_frames(self, frame_paths: List[Path], transcript: str) -> Dict[str, object]:
         images = [base64.b64encode(path.read_bytes()).decode("ascii") for path in frame_paths]
@@ -107,6 +141,50 @@ class VideoUnderstandingEngine:
                 ) from exc
             logger.warning(f"[VideoUnderstanding] VLM failed, continuing without strict vision: {exc}")
             return {"visual_summary": "", "subjects": [], "events": [], "mood": "", "hook_angle": ""}
+
+    def _transcript_only_analysis(self, transcript: str, source_name: str) -> Dict[str, object]:
+        """Build a useful analysis from transcript alone when VLM is unavailable."""
+        sentences = [s.strip() for s in re.split(r"(?<=[.!?])\s+|\n+", transcript) if len(s.strip()) > 10]
+        subjects = []
+        events = []
+        mood = "neutral"
+
+        # Extract key topics from transcript
+        topic_keywords = {
+            "action": ["đánh", "chiến", "nổ", "chém", "chạy", "bay", "lao"],
+            "emotion": ["khóc", "cười", "sợ", "vui", "buồn", "tức", "giận"],
+            "dialog": ["nói", "hỏi", "đáp", "trả lời", "kể", "bảo"],
+        }
+        for category, keywords in topic_keywords.items():
+            for kw in keywords:
+                if kw in transcript.lower():
+                    events.append(f"{category}: phát hiện '{kw}' trong transcript")
+
+        # Pick most info-dense sentences as highlights
+        best = sorted(sentences, key=len, reverse=True)[:5]
+
+        hook_angle = best[0] if best else f"Video {source_name} cần review"
+        visual_summary = " ".join(best[:3]) if best else f"Nội dung từ {source_name}"
+
+        return {
+            "model": "transcript_fallback",
+            "keyframes": [],
+            "observations": {
+                "visual_summary": visual_summary,
+                "subjects": subjects,
+                "events": events,
+                "mood": mood,
+                "hook_angle": hook_angle[:240],
+                "missing_context": "VLM không khả dụng — phân tích dựa hoàn toàn trên transcript",
+            },
+            "script_outline": {
+                "hook": hook_angle[:240],
+                "context": visual_summary[:360],
+                "insight": " ".join(str(e) for e in events[:3]),
+                "closing": "Tóm lại, đây là những chi tiết đáng chú ý nhất từ nội dung.",
+                "transcript_hint": re.sub(r"\s+", " ", transcript[:360]).strip(),
+            },
+        }
 
     def _build_script_outline(self, observations: Dict[str, object], transcript: str) -> Dict[str, str]:
         return {

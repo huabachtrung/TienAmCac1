@@ -120,6 +120,7 @@ def process_video_edit_task(
 
         job.output_path = output_path
         job.meta["renderer"] = renderer
+        job.meta["render_metadata"] = engine.last_render_metadata
         job.meta["edit_plan_path"] = result.payload.get("edit_plan_path", "")
         job.meta["edit_plan_summary"] = {
             "captions": len(ctx.edit_plan.get("captions", [])),
@@ -144,6 +145,26 @@ def process_video_edit_task(
             }
         save_job(job)
         raise
+
+
+def run_video_edit_pipeline(
+    job_id: str,
+    *,
+    local_file_path: str | None = None,
+    source_url: str | None = None,
+    orientation: str = "vertical",
+    style: str = "creator_viral",
+    keep_full_video: bool = True,
+):
+    """Backward-compatible entrypoint used by diagnostics and older callers."""
+    return process_video_edit_task(
+        job_id,
+        local_file_path=local_file_path,
+        source_url=source_url,
+        orientation=orientation,
+        style=style,
+        keep_full_video=keep_full_video,
+    )
 
 
 def _set_stage(job, status: JobStatus, **progress_updates: int):

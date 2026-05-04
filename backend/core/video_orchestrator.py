@@ -26,7 +26,12 @@ def process_video_review_task(
     max_duration_sec: int = 45,
     style: str = "review_short",
 ):
-    """Run the video review pipeline and keep job status updated."""
+    """Run the video review pipeline and keep job status updated.
+
+    The pipeline is resilient: VLM and strict-mode failures fall back
+    gracefully so a review video is always produced when the source can
+    be downloaded and transcribed.
+    """
 
     job = get_job(job_id)
     if not job:
@@ -48,6 +53,7 @@ def process_video_review_task(
         _set_stage(job, JobStatus.PARSING, parsing=15)
         engine = VideoReviewEngine()
 
+        # ── Step 1: Prepare source ───────────────────────────────────
         source_path = engine.prepare_source(job_id, source_url, local_file_path)
         meta = engine.probe_video(source_path)
         job.filename = source_path.name
@@ -55,6 +61,7 @@ def process_video_review_task(
         job.meta.update({"source_path": str(source_path), "source_meta": meta})
         _set_stage(job, JobStatus.ANALYZING, parsing=100, analyzing=15)
 
+        # ── Step 2: Transcribe ───────────────────────────────────────
         transcription = engine.transcribe(source_path)
         job.meta.update(
             {
@@ -62,26 +69,46 @@ def process_video_review_task(
                 "transcript_language": transcription.get("language"),
             }
         )
+        _set_stage(job, JobStatus.ANALYZING, parsing=100, analyzing=50)
+
+        # ── Step 3: Visual analysis (non-fatal) ─────────────────────
+        visual_analysis = None
+        try:
+            visual_analysis = engine.understanding_engine.analyze(
+                source_path,
+                meta,
+                transcription["transcript"],
+            )
+            job.meta.update(
+                {
+                    "vision_model": visual_analysis.get("model", "unknown"),
+                    "visual_analysis": visual_analysis,
+                }
+            )
+        except Exception as exc:
+            logger.warning(f"[VideoOrchestrator] VLM analysis failed (non-fatal): {exc}")
+            job.meta["vision_model"] = "fallback"
+            job.meta["vlm_error"] = str(exc)
+
         _set_stage(job, JobStatus.ANALYZING, parsing=100, analyzing=100)
 
-        visual_analysis = engine.understanding_engine.analyze(
-            source_path,
-            meta,
-            transcription["transcript"],
-        )
-        job.meta.update(
-            {
-                "vision_model": engine.understanding_engine.model,
-                "visual_analysis": visual_analysis,
-            }
-        )
+        # ── Step 4: Build review script ──────────────────────────────
+        # Try strict mode first; fall back to non-strict if it fails
+        try:
+            summary = engine.summarize_review_strict(
+                transcription["transcript"],
+                source_name=source_path.stem,
+                max_duration_sec=max_duration_sec,
+                visual_analysis=visual_analysis,
+            )
+        except Exception as exc:
+            logger.warning(f"[VideoOrchestrator] Strict summary failed: {exc}. Using non-strict.")
+            summary = engine.summarize_review(
+                transcription["transcript"],
+                source_name=source_path.stem,
+                max_duration_sec=max_duration_sec,
+            )
 
-        summary = engine.summarize_review_strict(
-            transcription["transcript"],
-            source_name=source_path.stem,
-            max_duration_sec=max_duration_sec,
-            visual_analysis=visual_analysis,
-        )
         review_script = engine.build_review_script(summary)
         job.meta.update(
             {
@@ -91,6 +118,7 @@ def process_video_review_task(
         )
         _set_stage(job, JobStatus.GENERATING_VOICE, voice=20)
 
+        # ── Step 5: Synthesize narration ─────────────────────────────
         narration, speech_cues = asyncio.run(
             engine.synthesize_review_audio_timeline(job_id, review_script)
         )
@@ -101,6 +129,8 @@ def process_video_review_task(
         subtitles_path = engine.create_subtitles_from_cues(
             job_id, speech_cues, narration_duration_sec
         )
+
+        # ── Step 6: Select visual ranges (CapCut-style) ─────────────
         selected_ranges = engine.select_visual_ranges(
             transcript_segments=transcription["segments"],
             source_duration_sec=float(meta["duration_sec"]),
@@ -118,6 +148,7 @@ def process_video_review_task(
         _set_stage(job, JobStatus.GENERATING_VOICE, voice=100)
         _set_stage(job, JobStatus.MIXING, voice=100, mixing=30)
 
+        # ── Step 7: Render final video ───────────────────────────────
         output_path = engine.render_review_video(
             job_id=job_id,
             source_path=source_path,

@@ -1,0 +1,26 @@
+{
+  "id": "28b42aeb-6b6f-4e5c-bd42-8a3ad0e7aec6",
+  "status": "failed",
+  "filename": "podcast_video",
+  "file_path": "https://vnexpress.net/cac-tinh-thanh-ven-bien-thang-dam-dip-nghi-le-5069343.html",
+  "media_kind": "video",
+  "total_chapters": 0,
+  "processed_chapters": 0,
+  "chapters": [],
+  "output_path": null,
+  "error": "VoiceQualityError: Generated audio is silent: C:\\Users\\Admin\\Desktop\\TienAmCac\\backend\\assets\\video_temp\\28b42aeb-6b6f-4e5c-bd42-8a3ad0e7aec6\\podcast_voice_segments\\voice_001.wav",
+  "created_at": "2026-05-03T13:40:39.855090",
+  "updated_at": "2026-05-03T13:40:39.855090",
+  "meta": {
+    "video_task": "podcast",
+    "source_url": "https://vnexpress.net/cac-tinh-thanh-ven-bien-thang-dam-dip-nghi-le-5069343.html"
+  },
+  "progress": {
+    "parsing": 0,
+    "analyzing": 0,
+    "voice": 0,
+    "fx": 0,
+    "mixing": 0,
+    "podcast": 10
+  }
+}

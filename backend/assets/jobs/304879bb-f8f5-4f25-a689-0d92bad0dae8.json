@@ -1,0 +1,137 @@
+{
+  "id": "304879bb-f8f5-4f25-a689-0d92bad0dae8",
+  "status": "done",
+  "filename": "Rick_Astley_-_Never_Gonna_Give_You_Up_Official_Vid [dQw4w9WgXcQ].mp4",
+  "file_path": "C:\\Users\\Admin\\Desktop\\TienAmCac\\backend\\assets\\uploads\\304879bb-f8f5-4f25-a689-0d92bad0dae8\\Rick_Astley_-_Never_Gonna_Give_You_Up_Official_Vid [dQw4w9WgXcQ].mp4",
+  "media_kind": "video",
+  "total_chapters": 0,
+  "processed_chapters": 0,
+  "chapters": [],
+  "output_path": "C:\\Users\\Admin\\Desktop\\TienAmCac\\backend\\assets\\video_output\\304879bb-f8f5-4f25-a689-0d92bad0dae8\\edited_output.mp4",
+  "error": null,
+  "created_at": "2026-05-03T04:06:46.623548",
+  "updated_at": "2026-05-03T04:06:46.623548",
+  "meta": {
+    "video_task": "edit",
+    "orientation": "vertical",
+    "style": "creator_viral",
+    "keep_full_video": true,
+    "source_url": "https://www.youtube.com/watch?v=dQw4w9WgXcQ",
+    "source_path": "C:\\Users\\Admin\\Desktop\\TienAmCac\\backend\\assets\\uploads\\304879bb-f8f5-4f25-a689-0d92bad0dae8\\Rick_Astley_-_Never_Gonna_Give_You_Up_Official_Vid [dQw4w9WgXcQ].mp4",
+    "source_meta": {
+      "duration_sec": 213.04,
+      "width": 640,
+      "height": 360,
+      "fps": 25.0,
+      "has_audio": true
+    },
+    "current_agent_stage": "done",
+    "agent_log": [
+      {
+        "agent": "DirectorAgent",
+        "message": "Starting video edit pipeline for job 304879bb-f8f5-4f25-a689-0d92bad0dae8",
+        "status": "ok"
+      },
+      {
+        "agent": "TranscriberAgent",
+        "message": "Starting transcription...",
+        "status": "ok"
+      },
+      {
+        "agent": "TranscriberAgent",
+        "message": "Transcribed 0 segments, lang=en",
+        "status": "ok"
+      },
+      {
+        "agent": "SceneAnalystAgent",
+        "message": "Analyzing audio energy and scene types...",
+        "status": "ok"
+      },
+      {
+        "agent": "SceneAnalystAgent",
+        "message": "Found 40 beats, 80 energy peaks, 0 scene annotations",
+        "status": "ok"
+      },
+      {
+        "agent": "EditorAgent",
+        "message": "Building edit decision list...",
+        "status": "ok"
+      },
+      {
+        "agent": "EditorAgent",
+        "message": "Edit plan: 0 captions, 0 popups, 0 icons",
+        "status": "ok"
+      },
+      {
+        "agent": "SoundDesignerAgent",
+        "message": "Designing audio post-production...",
+        "status": "ok"
+      },
+      {
+        "agent": "SoundDesignerAgent",
+        "message": "Audio: bgm=bgm_ambient_light.mp3, 12 SFX (removed 0 missing, added 0 keyword-triggered)",
+        "status": "ok"
+      },
+      {
+        "agent": "CaptionWriterAgent",
+        "message": "Validating and enhancing captions...",
+        "status": "ok"
+      },
+      {
+        "agent": "CaptionWriterAgent",
+        "message": "Captions: 0 valid (removed 0 empty), 0 popups",
+        "status": "ok"
+      },
+      {
+        "agent": "QualityGateAgent",
+        "message": "Running quality checks...",
+        "status": "ok"
+      },
+      {
+        "agent": "QualityGateAgent",
+        "message": "✅ PASSED (1 warnings)",
+        "status": "ok"
+      },
+      {
+        "agent": "RenderAgent",
+        "message": "Rendering final video...",
+        "status": "ok"
+      },
+      {
+        "agent": "RenderAgent",
+        "message": "✅ Render complete: C:\\Users\\Admin\\Desktop\\TienAmCac\\backend\\assets\\video_output\\304879bb-f8f5-4f25-a689-0d92bad0dae8\\edited_output.mp4 (renderer=ffmpeg_fallback)",
+        "status": "ok"
+      },
+      {
+        "agent": "DirectorAgent",
+        "message": "✅ Pipeline complete!",
+        "status": "ok"
+      }
+    ],
+    "quality_report": {
+      "passed": true,
+      "errors": [],
+      "warnings": [
+        "QA_NO_CAPTIONS: Edit plan has zero captions — video sẽ không có phụ đề"
+      ],
+      "checks_run": 6,
+      "retry_count": 0
+    },
+    "renderer": "ffmpeg_fallback",
+    "render_metadata": {},
+    "edit_plan_path": "C:\\Users\\Admin\\Desktop\\TienAmCac\\backend\\assets\\video_temp\\304879bb-f8f5-4f25-a689-0d92bad0dae8\\edit_plan.json",
+    "edit_plan_summary": {
+      "captions": 0,
+      "text_popups": 0,
+      "icons": 0,
+      "sfx": 12
+    }
+  },
+  "progress": {
+    "parsing": 100,
+    "analyzing": 100,
+    "voice": 0,
+    "fx": 100,
+    "mixing": 100
+  }
+}

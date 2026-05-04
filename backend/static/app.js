@@ -2,9 +2,11 @@ const DOM = {
     modeAudio: document.getElementById("modeAudio"),
     modeVideo: document.getElementById("modeVideo"),
     modeEdit: document.getElementById("modeEdit"),
+    modePodcast: document.getElementById("modePodcast"),
     audioForm: document.getElementById("audioForm"),
     videoForm: document.getElementById("videoForm"),
     editForm: document.getElementById("editForm"),
+    podcastForm: document.getElementById("podcastForm"),
     audioUploadZone: document.getElementById("audioUploadZone"),
     videoUploadZone: document.getElementById("videoUploadZone"),
     editUploadZone: document.getElementById("editUploadZone"),
@@ -58,6 +60,7 @@ let currentJobInterval = null;
 DOM.modeAudio.addEventListener("click", () => setMode("audio"));
 DOM.modeVideo.addEventListener("click", () => setMode("video"));
 DOM.modeEdit.addEventListener("click", () => setMode("edit"));
+DOM.modePodcast.addEventListener("click", () => setMode("podcast"));
 DOM.btnBrowseAudio.addEventListener("click", () => DOM.audioFileInput.click());
 DOM.btnBrowseVideo.addEventListener("click", () => DOM.videoFileInput.click());
 DOM.btnBrowseEdit.addEventListener("click", () => DOM.editFileInput.click());
@@ -95,6 +98,7 @@ DOM.editSourceUrl.addEventListener("input", () => {
 DOM.btnStartAudio.addEventListener("click", startAudioJob);
 DOM.btnStartVideo.addEventListener("click", startVideoJob);
 DOM.btnStartEdit.addEventListener("click", startEditJob);
+document.getElementById("btnStartPodcast").addEventListener("click", startPodcastJob);
 
 bindDropzone(DOM.audioUploadZone, handleAudioFileSelect);
 bindDropzone(DOM.videoUploadZone, handleVideoFileSelect);
@@ -105,9 +109,11 @@ function setMode(mode) {
     DOM.modeAudio.classList.toggle("active", mode === "audio");
     DOM.modeVideo.classList.toggle("active", mode === "video");
     DOM.modeEdit.classList.toggle("active", mode === "edit");
+    DOM.modePodcast.classList.toggle("active", mode === "podcast");
     DOM.audioForm.classList.toggle("hidden", mode !== "audio");
     DOM.videoForm.classList.toggle("hidden", mode !== "video");
     DOM.editForm.classList.toggle("hidden", mode !== "edit");
+    DOM.podcastForm.classList.toggle("hidden", mode !== "podcast");
 }
 
 function bindDropzone(element, onSelect) {
@@ -275,6 +281,37 @@ async function startEditJob() {
     }
 }
 
+async function startPodcastJob() {
+    const podcastUrl = document.getElementById("podcastUrl").value.trim();
+    if (!podcastUrl) {
+        showError("Hãy dán link bài báo để tạo video Podcast");
+        return;
+    }
+
+    if ("Notification" in window && Notification.permission === "default") {
+        Notification.requestPermission();
+    }
+
+    const btn = document.getElementById("btnStartPodcast");
+    setBusy(btn, true, "Đang tạo video podcast...");
+    const formData = new FormData();
+    formData.append("source_url", podcastUrl);
+
+    try {
+        const response = await fetch("/api/video/podcast", { method: "POST", body: formData });
+        const payload = await response.json();
+        if (!response.ok) {
+            throw new Error(payload.detail || "Tạo podcast thất bại");
+        }
+        prepareJobView(payload.job_id);
+        startPolling(payload.job_id);
+    } catch (error) {
+        showError(error.message);
+    } finally {
+        setBusy(btn, false, "Tạo video Podcast", "podcast");
+    }
+}
+
 function prepareJobView(jobId) {
     DOM.zeroState.classList.add("hidden");
     DOM.processingEngine.classList.remove("hidden");
@@ -394,10 +431,17 @@ function showResult(payload) {
 
     if (payload.media_kind === "video") {
         const isEdit = payload.meta?.video_task === "edit";
-        messageBody = isEdit
-            ? "Video edit da duoc hau ky va san sang tai ve."
-            : "Video review đã được lưu và sẵn sàng tải về.";
-        DOM.resultMessage.textContent = isEdit ? "Video edit da render xong." : "Video review đã render xong.";
+        const isPodcast = payload.meta?.video_task === "podcast";
+        if (isPodcast) {
+            messageBody = "Video podcast đã được render và sẵn sàng tải về.";
+            DOM.resultMessage.textContent = "Video podcast đã render xong.";
+        } else if (isEdit) {
+            messageBody = "Video edit da duoc hau ky va san sang tai ve.";
+            DOM.resultMessage.textContent = "Video edit da render xong.";
+        } else {
+            messageBody = "Video review đã được lưu và sẵn sàng tải về.";
+            DOM.resultMessage.textContent = "Video review đã render xong.";
+        }
         DOM.videoPlayer.src = payload.download_url;
         DOM.videoPlayer.classList.remove("hidden");
     } else {

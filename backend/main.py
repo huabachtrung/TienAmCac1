@@ -30,6 +30,7 @@ try:
         VideoAnalyzeRequest,
         VideoAnalyzeResponse,
     )
+    from .preflight import run_preflight
 except ImportError:
     from agents.video_review_planner import VideoReviewPlanner
     from config import settings
@@ -45,6 +46,44 @@ except ImportError:
         VideoAnalyzeRequest,
         VideoAnalyzeResponse,
     )
+    from preflight import run_preflight
+
+def process_podcast_task(job_id: str, source_url: str):
+    """Background thread entry point for podcast generation."""
+    import asyncio
+    try:
+        from .core.podcast_engine import PodcastEngine
+    except ImportError:
+        try:
+            from core.podcast_engine import PodcastEngine
+        except ImportError:
+            from backend.core.podcast_engine import PodcastEngine
+
+    job = get_job(job_id)
+    if not job:
+        return
+
+    try:
+        job.status = JobStatus.ANALYZING
+        # progress is a dict in schema
+        job.progress["podcast"] = 10 
+        save_job(job)
+
+        engine = PodcastEngine()
+        # asyncio.run is safe here because we are in a background thread
+        output_path = asyncio.run(engine.generate_from_url(job_id, source_url))
+
+        job.status = JobStatus.DONE
+        job.progress["podcast"] = 100
+        job.output_path = output_path
+        save_job(job)
+        logger.info(f"[Podcast] Job {job_id} completed: {output_path}")
+    except Exception as e:
+        logger.exception(f"[Podcast] Failed for job {job_id}")
+        if job:
+            job.status = JobStatus.FAILED
+            job.error = f"{type(e).__name__}: {e}"
+            save_job(job)
 
 
 for directory in (
@@ -295,6 +334,51 @@ async def create_video_edit(
     )
 
 
+@app.post("/api/video/podcast", response_model=UploadResponse)
+async def create_podcast(
+    source_url: str = Form(...)
+):
+    """Create a podcast video directly from a given article URL."""
+    source_url = source_url.strip()
+    if not source_url:
+        raise HTTPException(
+            status_code=400,
+            detail="Source URL is required."
+        )
+
+    job_id = str(uuid.uuid4())
+    filename = "podcast_video"
+
+    job = Job(
+        id=job_id,
+        filename=filename,
+        file_path=source_url,
+        media_kind=MediaKind.VIDEO,
+        meta={
+            "video_task": "podcast",
+            "source_url": source_url,
+        },
+    )
+    save_job(job)
+    logger.info(f"[API] Podcast job created: {job_id} URL={source_url}")
+
+    thread = threading.Thread(
+        target=process_podcast_task,
+        kwargs={
+            "job_id": job_id,
+            "source_url": source_url
+        },
+        daemon=True,
+    )
+    thread.start()
+
+    return UploadResponse(
+        job_id=job_id,
+        message="Podcast generation started. Track progress at /api/jobs/{job_id}",
+        filename=filename,
+    )
+
+
 @app.get("/api/jobs/{job_id}", response_model=JobStatusResponse)
 async def get_job_status(job_id: str):
     """Return status for either audiobook or video review jobs."""
@@ -385,6 +469,12 @@ async def analyze_video(request: VideoAnalyzeRequest):
 @app.get("/api/health")
 async def health():
     return {"status": "ok", "service": "Tien Am Cac API v1.3.0"}
+
+
+@app.get("/api/preflight")
+async def preflight(deep: bool = False, hyperframes: bool = False):
+    """Return local runtime readiness checks for strict AI/video jobs."""
+    return run_preflight(deep=deep, include_hyperframes=hyperframes or None)
 
 
 app.mount(

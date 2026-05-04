@@ -1,0 +1,135 @@
+{
+  "id": "d6fd6c3d-39b7-4886-833e-a6399d63a2ed",
+  "status": "done",
+  "filename": "MAI_M_I_CHO_C_S_-_T_p_01_Vi_t_sub [ywUztJ8yTnw].mp4",
+  "file_path": "C:\\Users\\Admin\\Desktop\\TienAmCac\\backend\\assets\\uploads\\d6fd6c3d-39b7-4886-833e-a6399d63a2ed\\MAI_M_I_CHO_C_S_-_T_p_01_Vi_t_sub [ywUztJ8yTnw].mp4",
+  "media_kind": "video",
+  "total_chapters": 0,
+  "processed_chapters": 0,
+  "chapters": [],
+  "output_path": "C:\\Users\\Admin\\Desktop\\TienAmCac\\backend\\assets\\video_output\\d6fd6c3d-39b7-4886-833e-a6399d63a2ed\\edited_output.mp4",
+  "error": null,
+  "created_at": "2026-05-03T04:12:49.913121",
+  "updated_at": "2026-05-03T04:12:49.913121",
+  "meta": {
+    "video_task": "edit",
+    "orientation": "vertical",
+    "style": "creator_viral",
+    "keep_full_video": true,
+    "source_url": "https://www.youtube.com/watch?v=ywUztJ8yTnw",
+    "source_path": "C:\\Users\\Admin\\Desktop\\TienAmCac\\backend\\assets\\uploads\\d6fd6c3d-39b7-4886-833e-a6399d63a2ed\\MAI_M_I_CHO_C_S_-_T_p_01_Vi_t_sub [ywUztJ8yTnw].mp4",
+    "source_meta": {
+      "duration_sec": 1436.04,
+      "width": 640,
+      "height": 360,
+      "fps": 23.976023976023978,
+      "has_audio": true
+    },
+    "current_agent_stage": "done",
+    "agent_log": [
+      {
+        "agent": "DirectorAgent",
+        "message": "Starting video edit pipeline for job d6fd6c3d-39b7-4886-833e-a6399d63a2ed",
+        "status": "ok"
+      },
+      {
+        "agent": "TranscriberAgent",
+        "message": "Starting transcription...",
+        "status": "ok"
+      },
+      {
+        "agent": "TranscriberAgent",
+        "message": "Transcribed 487 segments, lang=ja",
+        "status": "ok"
+      },
+      {
+        "agent": "SceneAnalystAgent",
+        "message": "Analyzing audio energy and scene types...",
+        "status": "ok"
+      },
+      {
+        "agent": "SceneAnalystAgent",
+        "message": "Found 40 beats, 80 energy peaks, 487 scene annotations",
+        "status": "ok"
+      },
+      {
+        "agent": "EditorAgent",
+        "message": "Building edit decision list...",
+        "status": "ok"
+      },
+      {
+        "agent": "EditorAgent",
+        "message": "Edit plan: 487 captions, 16 popups, 0 icons",
+        "status": "ok"
+      },
+      {
+        "agent": "SoundDesignerAgent",
+        "message": "Designing audio post-production...",
+        "status": "ok"
+      },
+      {
+        "agent": "SoundDesignerAgent",
+        "message": "Audio: bgm=bgm_ambient_light.mp3, 12 SFX (removed 0 missing, added 0 keyword-triggered)",
+        "status": "ok"
+      },
+      {
+        "agent": "CaptionWriterAgent",
+        "message": "Validating and enhancing captions...",
+        "status": "ok"
+      },
+      {
+        "agent": "CaptionWriterAgent",
+        "message": "Captions: 487 valid (removed 0 empty), 16 popups",
+        "status": "ok"
+      },
+      {
+        "agent": "QualityGateAgent",
+        "message": "Running quality checks...",
+        "status": "ok"
+      },
+      {
+        "agent": "QualityGateAgent",
+        "message": "✅ PASSED (0 warnings)",
+        "status": "ok"
+      },
+      {
+        "agent": "RenderAgent",
+        "message": "Rendering final video...",
+        "status": "ok"
+      },
+      {
+        "agent": "RenderAgent",
+        "message": "✅ Render complete: C:\\Users\\Admin\\Desktop\\TienAmCac\\backend\\assets\\video_output\\d6fd6c3d-39b7-4886-833e-a6399d63a2ed\\edited_output.mp4 (renderer=ffmpeg_fallback)",
+        "status": "ok"
+      },
+      {
+        "agent": "DirectorAgent",
+        "message": "✅ Pipeline complete!",
+        "status": "ok"
+      }
+    ],
+    "quality_report": {
+      "passed": true,
+      "errors": [],
+      "warnings": [],
+      "checks_run": 6,
+      "retry_count": 0
+    },
+    "renderer": "ffmpeg_fallback",
+    "render_metadata": {},
+    "edit_plan_path": "C:\\Users\\Admin\\Desktop\\TienAmCac\\backend\\assets\\video_temp\\d6fd6c3d-39b7-4886-833e-a6399d63a2ed\\edit_plan.json",
+    "edit_plan_summary": {
+      "captions": 487,
+      "text_popups": 16,
+      "icons": 0,
+      "sfx": 12
+    }
+  },
+  "progress": {
+    "parsing": 100,
+    "analyzing": 100,
+    "voice": 0,
+    "fx": 100,
+    "mixing": 100
+  }
+}

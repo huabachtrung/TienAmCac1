@@ -3,8 +3,8 @@ TIÊN ÂM CÁC — Core Configuration
 Centralized settings using pydantic-settings
 """
 
-from pydantic_settings import BaseSettings
-from pydantic import Field
+from pydantic_settings import BaseSettings, SettingsConfigDict
+from pydantic import Field, field_validator
 from typing import Optional
 from pathlib import Path
 
@@ -12,6 +12,11 @@ BASE_DIR = Path(__file__).resolve().parent
 
 
 class Settings(BaseSettings):
+    model_config = SettingsConfigDict(
+        env_file=str(BASE_DIR / ".env"),
+        env_file_encoding="utf-8",
+    )
+
     # Server
     HOST: str = "0.0.0.0"
     PORT: int = 8000
@@ -22,9 +27,8 @@ class Settings(BaseSettings):
 
     # AI Models
     OLLAMA_BASE_URL: str = Field(default="http://localhost:11434")
-    OLLAMA_MODEL: str = Field(
-        default="gemma4:e4b"
-    )  # Changed to Google's optimized 4B model for better processing
+    OLLAMA_MODEL: str = Field(default="qwen2.5:1.5b")
+    OLLAMA_TIMEOUT: int = Field(default=10)
     GROQ_API_KEY: Optional[str] = Field(default=None)
 
     # Voice settings
@@ -32,6 +36,7 @@ class Settings(BaseSettings):
     # only as an explicit legacy provider.
     VOICE_PROVIDER: str = Field(default="local_f5")
     STRICT_QUALITY_MODE: bool = Field(default=True)
+    VIDEO_REVIEW_TTS_FALLBACK: bool = Field(default=True)
     LOCAL_TTS_COMMAND: str = Field(default="f5-tts_infer-cli")
     LOCAL_TTS_COMMAND_TEMPLATE: Optional[str] = Field(default=None)
     LOCAL_TTS_MODEL_DIR: Path = BASE_DIR / "assets" / "models" / "f5-tts-vietnamese"
@@ -74,15 +79,45 @@ class Settings(BaseSettings):
     VIDEO_REVIEW_MAX_SECONDS: int = 45
     VIDEO_VERTICAL_SIZE: str = "1080x1920"
     VIDEO_HORIZONTAL_SIZE: str = "1920x1080"
-    VIDEO_VISION_REQUIRED: bool = Field(default=True)
+    VIDEO_VISION_REQUIRED: bool = Field(default=False)
     VIDEO_VISION_MODEL: str = Field(default="qwen2.5vl:3b")
     VIDEO_KEYFRAME_COUNT: int = Field(default=6)
     VIDEO_SMART_CROP_ENABLED: bool = Field(default=True)
     VIDEO_FACE_TRACK_SAMPLE_FPS: float = Field(default=2.0)
 
-    class Config:
-        env_file = str(BASE_DIR / ".env")
-        env_file_encoding = "utf-8"
+    # Video edit rendering
+    VIDEO_EDIT_RENDERER: str = Field(default="auto")  # auto | hyperframes | ffmpeg | remotion
+    HYPERFRAMES_COMMAND: str = Field(default="npx hyperframes")
+    HYPERFRAMES_QUALITY: str = Field(default="standard")  # draft | standard | high
+
+    @staticmethod
+    def _coerce_bool(value):
+        if isinstance(value, str):
+            normalized = value.strip().lower()
+            if normalized in {"1", "true", "yes", "on", "debug", "dev", "development"}:
+                return True
+            if normalized in {
+                "0",
+                "false",
+                "no",
+                "off",
+                "release",
+                "prod",
+                "production",
+            }:
+                return False
+        return value
+
+    @field_validator(
+        "DEBUG",
+        "STRICT_QUALITY_MODE",
+        "VIDEO_REVIEW_TTS_FALLBACK",
+        "VIDEO_VISION_REQUIRED",
+        "VIDEO_SMART_CROP_ENABLED",
+        mode="before",
+    )
+    def normalize_boolean_fields(cls, value):
+        return cls._coerce_bool(value)
 
 
 settings = Settings()

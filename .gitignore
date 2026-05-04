@@ -19,6 +19,7 @@ assets/video_sources/
 backend/assets/uploads/
 backend/assets/output/
 backend/assets/video_output/
+backend/assets/video_temp/
 backend/assets/models/
 backend/assets/bgm/
 backend/assets/sfx/

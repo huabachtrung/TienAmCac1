@@ -311,7 +311,7 @@ class QualityGateAgent:
         plan = ctx.edit_plan
         duration = float(ctx.source_meta.get("duration_sec", 1.0))
 
-        # Check 1: Must have captions
+        # Check 1: Captions are required for social vertical content
         captions = plan.get("captions", [])
         if not captions:
             errors.append("QA_NO_CAPTIONS: Edit plan has zero captions — "
@@ -366,18 +366,22 @@ class QualityGateAgent:
         if passed:
             ctx.log(self.role, f"✅ PASSED ({len(warnings)} warnings)")
             return AgentMessage(self.role, AgentRole.RENDERER)
-        else:
-            ctx.log(self.role, f"❌ FAILED: {errors}", "fail")
-            if ctx.retry_count < ctx.max_retries:
-                ctx.retry_count += 1
-                ctx.log(self.role, f"Requesting retry {ctx.retry_count}/{ctx.max_retries}")
-                return AgentMessage(self.role, AgentRole.DIRECTOR,
-                                    AgentStatus.RETRY, errors=errors)
-            else:
-                return AgentMessage(self.role, AgentRole.DIRECTOR,
-                                    AgentStatus.FAIL,
-                                    errors=[f"QA failed after {ctx.max_retries} retries: "
-                                            + "; ".join(errors)])
+
+        ctx.log(self.role, f"❌ FAILED: {errors}", "fail")
+        if ctx.retry_count < ctx.max_retries:
+            ctx.retry_count += 1
+            ctx.log(self.role, f"Requesting retry {ctx.retry_count}/{ctx.max_retries}")
+            return AgentMessage(self.role, AgentRole.DIRECTOR,
+                                AgentStatus.RETRY, errors=errors)
+
+        return AgentMessage(
+            self.role,
+            AgentRole.DIRECTOR,
+            AgentStatus.FAIL,
+            errors=[
+                f"QA failed after {ctx.max_retries} retries: " + "; ".join(errors)
+            ],
+        )
 
 
 class RenderAgent:

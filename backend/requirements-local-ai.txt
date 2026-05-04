@@ -3,6 +3,7 @@
 #
 # Recommended CUDA torch install for RTX 2060 / NVIDIA driver CUDA 13.x:
 # pip install torch==2.8.0+cu128 torchaudio==2.8.0+cu128 --extra-index-url https://download.pytorch.org/whl/cu128
+# pip install torchcodec==0.7.0
 #
 # Then install:
 f5-tts==1.1.20

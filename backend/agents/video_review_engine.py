@@ -421,30 +421,6 @@ Nội dung transcript:
     def _looks_vietnamese(self, text: str) -> bool:
         if not text.strip():
             return False
-        vietnamese_chars = "ăâđêôơưáàảãạấầẩẫậắằẳẵặéèẻẽẹếềểễệíìỉĩịóòỏõọốồổỗộớờởỡợúùủũụứừửữựýỳỷỹỵ"
-        lowered = text.lower()
-        if any(ch in lowered for ch in vietnamese_chars):
-            return True
-        common_words = {"của", "và", "là", "một", "những", "người", "này", "trong", "được", "không"}
-        tokens = set(re.findall(r"\w+", lowered))
-        return len(tokens & common_words) >= 2
-
-    def _generic_vietnamese_points(self, transcript: str) -> List[str]:
-        if transcript.strip():
-            return [
-                "Phần mở đầu đặt ra bối cảnh chính và kéo người xem vào câu chuyện.",
-                "Các diễn biến quan trọng được chọn lọc để giữ nhịp review rõ ràng.",
-                "Phần kết nhấn mạnh điểm đáng nhớ nhất của video gốc.",
-            ]
-        return [
-            "Video gốc chưa có transcript đủ rõ nên bản review tập trung vào nhịp tóm tắt an toàn.",
-            "Nội dung được trình bày ngắn gọn để phù hợp thời lượng đã chọn.",
-            "Phụ đề chỉ dùng tiếng Việt để giữ trải nghiệm thống nhất.",
-        ]
-
-    def _looks_vietnamese(self, text: str) -> bool:
-        if not text.strip():
-            return False
         vietnamese_chars = (
             "ăâđêôơư"
             "áàảãạấầẩẫậắằẳẵặ"
@@ -512,7 +488,29 @@ Nội dung transcript:
 
     async def synthesize_review_audio_timeline(self, job_id: str, review_script: str):
         out_path = settings.VIDEO_TEMP_DIR / job_id / "review_narration.wav"
+        out_path.parent.mkdir(parents=True, exist_ok=True)
+
+        # Try local F5-TTS first
         if settings.VOICE_PROVIDER.lower() == "local_f5":
+            try:
+                result = await asyncio.to_thread(
+                    self.local_voice_engine.synthesize_segments,
+                    self.local_voice_engine.split_text(review_script),
+                    out_path,
+                    settings.VIDEO_TEMP_DIR / job_id / "review_voice_segments",
+                )
+                return result.audio_path, result.cues
+            except Exception as exc:
+                if not settings.VIDEO_REVIEW_TTS_FALLBACK:
+                    raise
+                logger.warning(f"[VideoReview] Local F5-TTS failed: {exc}. Falling back to edge-tts.")
+
+        # Fallback to edge-tts
+        try:
+            narration_path = await self.synthesize_review_audio(job_id, review_script)
+        except Exception as exc:
+            # If edge-tts also fails, try local F5-TTS one more time or raise
+            logger.warning(f"[VideoReview] Edge-TTS also failed: {exc}. Retrying local.")
             result = await asyncio.to_thread(
                 self.local_voice_engine.synthesize_segments,
                 self.local_voice_engine.split_text(review_script),
@@ -521,7 +519,6 @@ Nội dung transcript:
             )
             return result.audio_path, result.cues
 
-        narration_path = await self.synthesize_review_audio(job_id, review_script)
         duration = self._audio_duration_sec(narration_path)
         return narration_path, self._build_even_cues(review_script, duration)
 
@@ -609,81 +606,122 @@ Nội dung transcript:
         source_duration_sec: float,
         narration_duration_sec: float,
     ) -> List[Dict[str, float]]:
-        target_clip_count = max(3, min(6, math.ceil(narration_duration_sec / 8)))
-        clip_len = max(4.0, min(8.0, narration_duration_sec / target_clip_count))
+        """CapCut-style smart clip selection.
 
+        Scores each transcript segment by multiple signals:
+        - hook_score: first 15% of video gets bonus (opening hook)
+        - density_score: word count * duration = info density
+        - energy_score: short, punchy segments = viral moments
+        - transition_score: topic changes between segments
+        Then picks clips with varied lengths (2-10s) ensuring temporal spread.
+        """
+        target_clip_count = max(3, min(8, math.ceil(narration_duration_sec / 6)))
+
+        if not transcript_segments:
+            # No transcript — evenly distribute clips
+            clip_len = max(3.0, narration_duration_sec / target_clip_count)
+            return [
+                {
+                    "start": round(i * clip_len, 2),
+                    "end": round(min(source_duration_sec, (i + 1) * clip_len), 2),
+                    "label": "context",
+                }
+                for i in range(target_clip_count)
+            ]
+
+        # ── Score each segment ───────────────────────────────────
+        scored = []
+        for idx, seg in enumerate(transcript_segments):
+            start = float(seg.get("start", 0))
+            end = float(seg.get("end", start + 1))
+            duration = max(0.5, end - start)
+            word_count = seg.get("words", len(str(seg.get("text", "")).split()))
+            if isinstance(word_count, list):
+                word_count = len(word_count)
+            text = str(seg.get("text", "")).lower()
+
+            # Hook: first 15% of video
+            hook_bonus = 2.0 if start < source_duration_sec * 0.15 else 0.0
+            # Density: information-rich segments
+            density = word_count / max(duration, 0.5)
+            # Energy: short punchy = viral
+            energy = 1.5 if duration < 4.0 and word_count > 3 else 0.5
+            # Viral keywords
+            viral_keywords = ["sốc", "bất ngờ", "không thể", "cực", "hot", "đỉnh",
+                              "thật sự", "quá", "wow", "amazing", "khó tin"]
+            viral_bonus = 2.0 if any(kw in text for kw in viral_keywords) else 0.0
+            # Ending bonus — good for conclusion clips
+            ending_bonus = 1.0 if start > source_duration_sec * 0.8 else 0.0
+
+            total_score = hook_bonus + density + energy + viral_bonus + ending_bonus
+
+            # Label for clip type
+            if hook_bonus > 0:
+                label = "hook"
+            elif viral_bonus > 0:
+                label = "viral"
+            elif energy > 1.0:
+                label = "highlight"
+            elif ending_bonus > 0:
+                label = "closing"
+            else:
+                label = "context"
+
+            scored.append({
+                "seg_idx": idx,
+                "start": start,
+                "end": end,
+                "duration": duration,
+                "score": total_score,
+                "label": label,
+            })
+
+        # ── Pick top clips with temporal spread ──────────────────
+        scored.sort(key=lambda x: x["score"], reverse=True)
         picked: List[Dict[str, float]] = []
-        if transcript_segments:
-            # Sort segments by importance (word count * duration) to prioritize key moments
-            sorted_segments = sorted(
-                transcript_segments,
-                key=lambda item: (item.get("words", 0) * (item["end"] - item["start"])),
-                reverse=True,
-            )
-            
-            # For long videos, distribute clips across the entire duration
-            # Calculate time intervals to ensure even distribution
-            time_interval = source_duration_sec / max(target_clip_count, 1)
-            
-            for i in range(target_clip_count):
-                # Target time for this clip (spread across the video)
-                target_time = (i + 0.5) * time_interval
-                
-                # Find the best segment near this target time
-                best_seg = None
-                best_score = 0
-                
-                for seg in sorted_segments:
-                    seg_center = (seg["start"] + seg["end"]) / 2
-                    time_dist = abs(seg_center - target_time)
-                    
-                    # Skip if too close to already picked clips
-                    too_close = any(
-                        abs(seg["start"] - item["start"]) < clip_len * 0.7
-                        for item in picked
-                    )
-                    if too_close:
-                        continue
-                    
-                    # Score based on importance and proximity to target time
-                    importance = seg.get("words", 0) * (seg["end"] - seg["start"])
-                    # Penalize distance from target (closer is better)
-                    time_penalty = max(0, time_dist - clip_len)
-                    score = importance - time_penalty * 10
-                    
-                    if score > best_score:
-                        best_score = score
-                        best_seg = seg
-                
-                if best_seg:
-                    start = max(
-                        0.0,
-                        min(
-                            best_seg["start"],
-                            max(0.0, source_duration_sec - clip_len),
-                        ),
-                    )
-                    end = min(source_duration_sec, start + clip_len)
-                    picked.append({"start": round(start, 2), "end": round(end, 2)})
-                    # Remove used segment to avoid reuse
-                    if best_seg in sorted_segments:
-                        sorted_segments.remove(best_seg)
-        
-        # If we don't have enough clips, add fallback clips evenly distributed
-        if len(picked) < target_clip_count:
-            fallback_count = target_clip_count - len(picked)
-            for idx in range(fallback_count):
-                # Distribute fallback clips evenly across the video
-                ratio = (idx + 1) / (fallback_count + 1)
-                start = ratio * max(source_duration_sec - clip_len, 0.0)
-                picked.append(
-                    {
-                        "start": round(start, 2),
-                        "end": round(min(source_duration_sec, start + clip_len), 2),
-                    }
-                )
+        used_times: List[float] = []
+        min_gap = max(2.0, source_duration_sec / (target_clip_count * 2))
 
-        picked = sorted(picked, key=lambda item: item["start"])
+        for item in scored:
+            if len(picked) >= target_clip_count:
+                break
+            seg_center = (item["start"] + item["end"]) / 2
+            # Check temporal gap from already-picked clips
+            too_close = any(abs(seg_center - t) < min_gap for t in used_times)
+            if too_close:
+                continue
+
+            # Dynamic clip length: hooks are shorter, context longer
+            if item["label"] in ("hook", "viral"):
+                clip_len = min(item["duration"], max(2.0, narration_duration_sec / target_clip_count * 0.7))
+            elif item["label"] == "highlight":
+                clip_len = min(item["duration"] + 1.0, max(3.0, narration_duration_sec / target_clip_count))
+            else:
+                clip_len = min(item["duration"] + 2.0, max(4.0, narration_duration_sec / target_clip_count * 1.3))
+
+            clip_start = max(0.0, min(item["start"], source_duration_sec - clip_len))
+            clip_end = min(source_duration_sec, clip_start + clip_len)
+
+            picked.append({
+                "start": round(clip_start, 2),
+                "end": round(clip_end, 2),
+                "label": item["label"],
+            })
+            used_times.append(seg_center)
+
+        # Fill remaining slots with evenly distributed clips
+        if len(picked) < target_clip_count:
+            fill_len = max(3.0, narration_duration_sec / target_clip_count)
+            for idx in range(target_clip_count - len(picked)):
+                ratio = (idx + 1) / (target_clip_count - len(picked) + 1)
+                start = ratio * max(source_duration_sec - fill_len, 0.0)
+                picked.append({
+                    "start": round(start, 2),
+                    "end": round(min(source_duration_sec, start + fill_len), 2),
+                    "label": "context",
+                })
+
+        picked.sort(key=lambda item: item["start"])
         return picked
 
     def render_review_video(

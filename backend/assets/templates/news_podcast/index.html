@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>News Podcast Template</title>
+    <!-- Use Be Vietnam Pro for professional Vietnamese typography -->
+    <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;700;900&display=swap" rel="stylesheet">
+    <!-- Load GSAP -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <style>
+        body, html {
+            margin: 0;
+            padding: 0;
+            width: 1080px;
+            height: 1920px;
+            overflow: hidden;
+            background-color: #111;
+            font-family: 'Be Vietnam Pro', sans-serif;
+        }
+        
+        #container {
+            width: 1080px;
+            height: 1920px;
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .scene-bg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 1080px;
+            height: 1920px;
+            object-fit: cover;
+            opacity: 0;
+            z-index: 1;
+            filter: brightness(0.6);
+        }
+
+        .overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(to bottom, rgba(0,0,0,0.2) 0%, rgba(0,0,0,0.8) 100%);
+            z-index: 2;
+        }
+
+        .main-text-container {
+            position: absolute;
+            top: 25%;
+            left: 10%;
+            width: 80%;
+            z-index: 10;
+            text-align: center;
+        }
+
+        .icon-layer {
+            position: absolute;
+            top: 45%;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 15;
+            font-size: 150px;
+            opacity: 0;
+            text-shadow: 0 10px 30px rgba(0,0,0,0.8);
+        }
+
+        .main-text {
+            color: #fff;
+            font-size: 80px;
+            font-weight: 900;
+            text-shadow: 0 4px 10px rgba(0,0,0,0.5);
+            opacity: 0;
+        }
+
+        /* Karaoke Subtitles */
+        #subtitles-container {
+            position: absolute;
+            bottom: 15%;
+            left: 5%;
+            width: 90%;
+            text-align: center;
+            z-index: 20;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            align-content: center;
+        }
+
+        .karaoke-word {
+            color: #ffffff;
+            font-size: 65px;
+            font-weight: 700;
+            margin: 0 10px;
+            text-shadow: 0 4px 15px rgba(0,0,0,0.8);
+            display: inline-block;
+            opacity: 0.7;
+            transform-origin: center;
+        }
+        
+        .karaoke-word.active {
+            color: #FFD700; /* Gold/Yellow highlight */
+            opacity: 1;
+            text-shadow: 0 0 20px rgba(255, 215, 0, 0.6);
+        }
+
+        .brand-logo {
+            position: absolute;
+            top: 50px;
+            left: 50px;
+            color: #fff;
+            font-size: 40px;
+            font-weight: 900;
+            z-index: 30;
+            letter-spacing: 2px;
+            text-shadow: 0 2px 5px rgba(0,0,0,0.5);
+        }
+    </style>
+</head>
+<body>
+    <div id="container">
+        <div class="brand-logo">TIEN AM CAC</div>
+        <div class="overlay"></div>
+        <div id="bg-container"></div>
+        <div class="main-text-container" id="text-container"></div>
+        <div id="icon-container"></div>
+        <div id="subtitles-container"></div>
+    </div>
+
+    <script>
+        let mainTimeline = gsap.timeline({paused: true});
+        let wordsData = [];
+
+        window.loadScript = function(data) {
+            const bgContainer = document.getElementById('bg-container');
+            const textContainer = document.getElementById('text-container');
+            const subContainer = document.getElementById('subtitles-container');
+            
+            // Build Scenes (Images and Main text)
+            if (data.scenes && data.scenes.length > 0) {
+                data.scenes.forEach((scene, index) => {
+                    // Create Background Image
+                    if (scene.image_url) {
+                        const img = document.createElement('img');
+                        img.src = scene.image_url;
+                        img.className = 'scene-bg';
+                        img.id = `bg-${index}`;
+                        bgContainer.appendChild(img);
+                        
+                        // GSAP Animation for Background
+                        mainTimeline.to(img, {
+                            opacity: 1,
+                            duration: 0.5
+                        }, scene.start);
+                        
+                        // Scale effect (Zoom in)
+                        mainTimeline.fromTo(img, {scale: 1}, {
+                            scale: 1.1,
+                            duration: scene.end - scene.start,
+                            ease: "none"
+                        }, scene.start);
+
+                        mainTimeline.to(img, {
+                            opacity: 0,
+                            duration: 0.5
+                        }, scene.end - 0.5);
+                    }
+
+                    // Create Text Overlay (Hook, Points, etc.)
+                    if (scene.text) {
+                        const div = document.createElement('div');
+                        div.className = 'main-text';
+                        div.innerHTML = scene.text;
+                        div.id = `text-${index}`;
+                        textContainer.appendChild(div);
+
+                        // Pop-up animation (CapCut Style Spring)
+                        mainTimeline.fromTo(div, 
+                            {opacity: 0, scale: 0.5, y: 50}, 
+                            {opacity: 1, scale: 1, y: 0, duration: 0.6, ease: "back.out(1.7)"}, 
+                            scene.start + 0.2
+                        );
+
+                        mainTimeline.to(div, {
+                            opacity: 0,
+                            y: -50,
+                            duration: 0.5
+                        }, scene.end - 0.5);
+                    }
+
+                    // Create Floating Icons/Emojis (CapCut Reactions)
+                    if (scene.icon) {
+                        const iconDiv = document.createElement('div');
+                        iconDiv.className = 'icon-layer';
+                        iconDiv.innerHTML = scene.icon; // e.g. "🔥" or "😱" or an <img src>
+                        document.getElementById('icon-container').appendChild(iconDiv);
+
+                        // Scale Pop-up from 0 to 1
+                        mainTimeline.fromTo(iconDiv, 
+                            {opacity: 0, scale: 0, rotation: -45}, 
+                            {opacity: 1, scale: 1, rotation: 0, duration: 0.5, ease: "elastic.out(1, 0.5)"}, 
+                            scene.start + 0.5
+                        );
+
+                        mainTimeline.to(iconDiv, {
+                            opacity: 0,
+                            scale: 1.5,
+                            duration: 0.3
+                        }, scene.end - 0.3);
+                    }
+                });
+            }
+
+            // Build Karaoke Subtitles
+            if (data.words && data.words.length > 0) {
+                wordsData = data.words;
+                wordsData.forEach((wordInfo, i) => {
+                    const span = document.createElement('span');
+                    span.className = 'karaoke-word';
+                    span.id = `word-${i}`;
+                    span.innerText = wordInfo.word;
+                    subContainer.appendChild(span);
+
+                    // We don't pre-bake word active state into mainTimeline to avoid a huge timeline.
+                    // Instead, we will update them dynamically in goToTime.
+                    // But we can bake it into GSAP if we want. Let's do dynamic class toggle in goToTime for better performance if too many words.
+                });
+            }
+        };
+
+        window.goToTime = function(timeSec) {
+            // Seek main GSAP timeline
+            mainTimeline.time(timeSec);
+
+            // Handle Karaoke words highlighting
+            const currentSubtitles = [];
+            // Reset all words
+            document.querySelectorAll('.karaoke-word').forEach((el, index) => {
+                const w = wordsData[index];
+                if (!w) return;
+                
+                // Show words only if they are within a 5-second context window of current time (so screen doesn't get cluttered)
+                // For simplicity, let's just show a rolling window of 6 words, or group by sentences.
+                // Assuming data.words is already grouped into sentences, we'll just handle highlighting.
+                
+                // Highlight logic
+                if (timeSec >= w.start && timeSec <= w.end) {
+                    el.classList.add('active');
+                    gsap.to(el, {scale: 1.1, duration: 0.1, overwrite: true});
+                } else {
+                    el.classList.remove('active');
+                    gsap.to(el, {scale: 1, duration: 0.1, overwrite: true});
+                }
+
+                // Visibility logic (show only words near current time: say -2s to +3s)
+                if (timeSec >= w.start - 3 && timeSec <= w.end + 2) {
+                    el.style.display = 'inline-block';
+                } else {
+                    el.style.display = 'none';
+                }
+            });
+        };
+    </script>
+</body>
+</html>

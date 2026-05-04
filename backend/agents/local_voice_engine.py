@@ -11,10 +11,12 @@ import re
 import shlex
 import shutil
 import subprocess
+import os
 from dataclasses import dataclass
 from pathlib import Path
 from typing import Iterable, List, Optional
 
+import httpx
 from loguru import logger
 
 try:
@@ -78,15 +80,45 @@ class LocalVoiceEngine:
         if AudioSegment is None:
             raise VoiceQualityError("pydub is required for local TTS validation and concatenation.")
 
+    def free_vram(self) -> None:
+        """Unload idle AI models (e.g., Ollama) from VRAM to make room for TTS."""
+        try:
+            logger.info("[LocalVoice] Checking for idle AI models to free VRAM...")
+            url = f"{settings.OLLAMA_BASE_URL}/api/ps"
+            response = httpx.get(url, timeout=5.0)
+            if response.status_code == 200:
+                models = response.json().get("models", [])
+                for m in models:
+                    model_name = m.get("model")
+                    if model_name:
+                        logger.info(f"[LocalVoice] Unloading Ollama model: {model_name}")
+                        httpx.post(
+                            f"{settings.OLLAMA_BASE_URL}/api/generate",
+                            json={"model": model_name, "keep_alive": 0},
+                            timeout=5.0
+                        )
+        except Exception as e:
+            logger.warning(f"[LocalVoice] Failed to free VRAM from Ollama: {e}")
+
     def synthesize_text(self, text: str, output_path: Path) -> Path:
         self.healthcheck()
         normalized = self.normalize_text(text)
         if not normalized:
             raise VoiceQualityError("Refusing to synthesize empty narration text.")
+        output_path = output_path.resolve()
         output_path.parent.mkdir(parents=True, exist_ok=True)
+        self.free_vram()
         cmd = self._build_command(normalized, output_path)
         logger.info(f"[LocalVoice] Running {self.provider_name} for {output_path.name}")
-        result = subprocess.run(cmd, capture_output=True, text=True, timeout=1800)
+        result = subprocess.run(
+            cmd,
+            capture_output=True,
+            text=True,
+            encoding="utf-8",
+            errors="replace",
+            timeout=1800,
+            env=self._subprocess_env(),
+        )
         if result.returncode != 0:
             raise VoiceQualityError(result.stderr.strip() or "Local TTS command failed.")
         self._validate_audio(output_path)
@@ -101,6 +133,7 @@ class LocalVoiceEngine:
         pause_ms: int = 160,
     ) -> SpeechSynthesisResult:
         self.healthcheck()
+        output_path = output_path.resolve()
         output_path.parent.mkdir(parents=True, exist_ok=True)
         segment_dir = segment_dir or output_path.parent / "tts_segments"
         segment_dir.mkdir(parents=True, exist_ok=True)
@@ -196,6 +229,18 @@ class LocalVoiceEngine:
             "--output_file",
             values["output_file"],
         ]
+
+    def _subprocess_env(self) -> dict:
+        env = os.environ.copy()
+        root = str(Path(__file__).resolve().parents[2])
+        pythonpath = env.get("PYTHONPATH", "")
+        parts = [part for part in pythonpath.split(os.pathsep) if part]
+        if root not in parts:
+            env["PYTHONPATH"] = root + (os.pathsep + pythonpath if pythonpath else "")
+        env.setdefault("PYTHONIOENCODING", "utf-8")
+        env.setdefault("PYTHONUTF8", "1")
+        env.setdefault("WANDB_DISABLED", "true")
+        return env
 
     def _validate_audio(self, path: Path) -> None:
         if not path.exists() or path.stat().st_size < 1024:
